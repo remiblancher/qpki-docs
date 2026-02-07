@@ -1,0 +1,33 @@
+/* Qentriq Custom Styles */
+
+/* Cacher le dropdown multiSidebar */
+.sidebar-switcher,
+[data-sidebar-switcher],
+select.sidebar-switcher {
+	display: none !important;
+}
+
+/* Cacher les badges GitHub dans la documentation */
+img[src*="shields.io"],
+img[src*="codecov.io"],
+img[src*="goreportcard.com"],
+img[src*="pkg.go.dev/badge"],
+img[src*="github.com"][src*="badge"] {
+	display: none;
+}
+
+/* Code blocks */
+.expressive-code pre {
+	border-radius: 0.5rem;
+}
+
+/* Sidebar */
+.sidebar-content {
+	scrollbar-width: thin;
+}
+
+/* Links */
+a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+}

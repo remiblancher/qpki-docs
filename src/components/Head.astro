@@ -1,0 +1,32 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Head.astro';
+---
+
+<Default {...Astro.props}><slot /></Default>
+<script is:inline>
+(function() {
+	// Gestion de la visibilité des sidebars selon la section
+	function updateSidebarVisibility() {
+		var path = window.location.pathname;
+		var isLabSection = path.startsWith('/lab/');
+		var isPkiSection = path.startsWith('/pki/');
+
+		var pkiSidebar = document.querySelector('[data-starlight-multi-sidebar-label="QPKI Documentation"]');
+		var labSidebar = document.querySelector('[data-starlight-multi-sidebar-label="QLAB Learning"]');
+
+		if (pkiSidebar) {
+			pkiSidebar.style.display = isLabSection ? 'none' : 'block';
+		}
+		if (labSidebar) {
+			labSidebar.style.display = isPkiSection ? 'none' : 'block';
+		}
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', updateSidebarVisibility);
+	} else {
+		updateSidebarVisibility();
+	}
+})();
+</script>

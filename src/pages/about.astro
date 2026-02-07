@@ -1,0 +1,346 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About QentriQ - Open-source Quantum-Safe PKI suite for the post-quantum era." />
+  <title>About - QentriQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --accent: #4f46e5;
+      --accent-light: #818cf8;
+      --bg-dark: #0f172a;
+      --bg-darker: #020617;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-github {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-light);
+    }
+
+    .section p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .vision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .vision-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+
+    .vision-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .vision-card p {
+      font-size: 1rem;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.35rem;
+      top: 0.25rem;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-item .date {
+      color: var(--accent-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 1rem;
+      padding: 1.5rem;
+    }
+
+    .project-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card a {
+      color: var(--accent-light);
+      font-size: 0.9rem;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer a {
+      color: var(--accent-light);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#4f46e5" />
+        <text x="20" y="26" text-anchor="middle" fill="white" font-family="system-ui" font-weight="bold" font-size="16">Q</text>
+      </svg>
+      QentriQ
+    </a>
+    <div class="nav-links">
+      <a href="/about/" class="active">About</a>
+      <a href="/compare/">Compare</a>
+      <a href="/pki/readme/">Docs</a>
+      <a href="/lab/overview/">Lab</a>
+      <a href="https://github.com/remiblancher/post-quantum-pki" class="nav-github">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>About QentriQ</h1>
+    <p>
+      An open-source initiative to make quantum-safe PKI accessible to everyone,
+      preparing organizations for the post-quantum cryptography transition.
+    </p>
+  </section>
+
+  <div class="content">
+    <section class="section">
+      <h2>Our Vision</h2>
+      <p>
+        Quantum computers will eventually break the cryptographic algorithms that secure today's digital infrastructure.
+        QentriQ exists to ensure that organizations of all sizes can prepare for this transition with production-ready,
+        open-source tools.
+      </p>
+      <div class="vision-grid">
+        <div class="vision-card">
+          <h3>Accessible</h3>
+          <p>No expensive licenses, no vendor lock-in. Pure open-source under Apache 2.0 license.</p>
+        </div>
+        <div class="vision-card">
+          <h3>Standards-First</h3>
+          <p>Built on NIST FIPS 203/204/205 and IETF RFCs. No proprietary extensions.</p>
+        </div>
+        <div class="vision-card">
+          <h3>Production-Ready</h3>
+          <p>Not a research project. Designed for real-world deployment with HSM support and audit logging.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>The Suite</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>QPKI</h3>
+          <p>Complete post-quantum PKI toolkit: CA, OCSP, TSA, CMS, and more. Single binary, CLI-first.</p>
+          <a href="https://github.com/remiblancher/post-quantum-pki">github.com/remiblancher/post-quantum-pki</a>
+        </div>
+        <div class="project-card">
+          <h3>QLAB</h3>
+          <p>Hands-on learning journey from quantum threats to production-ready crypto-agile infrastructure.</p>
+          <a href="https://github.com/remiblancher/post-quantum-pki-lab">github.com/remiblancher/post-quantum-pki-lab</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Timeline</h2>
+      <p>Key milestones in the post-quantum transition:</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="date">August 2024</div>
+          <h3>NIST PQC Standards Published</h3>
+          <p>FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA) officially released.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2025</div>
+          <h3>CNSA 2.0 Phase 1</h3>
+          <p>NSA recommends starting migration planning for national security systems.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2030</div>
+          <h3>CNSA 2.0 Phase 2</h3>
+          <p>Hybrid solutions required. Classical-only signatures deprecated for NSS.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="date">2033</div>
+          <h3>CNSA 2.0 Phase 3</h3>
+          <p>Full post-quantum required. Classical algorithms no longer approved.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>
+      Open source under Apache 2.0 license.
+      <a href="https://github.com/remiblancher/post-quantum-pki">Contribute on GitHub</a>
+    </p>
+  </footer>
+</body>
+</html>

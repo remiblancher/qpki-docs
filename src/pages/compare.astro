@@ -1,0 +1,449 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Compare QentriQ with other post-quantum PKI solutions: OpenSSL, BouncyCastle, liboqs." />
+  <title>Compare - QentriQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --accent: #4f46e5;
+      --accent-light: #818cf8;
+      --bg-dark: #0f172a;
+      --bg-darker: #020617;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-github {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comparison-table th {
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+
+    .comparison-table th:first-child {
+      text-align: left;
+    }
+
+    .comparison-table td:first-child {
+      font-weight: 500;
+    }
+
+    .comparison-table tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .check {
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .partial {
+      color: var(--yellow);
+    }
+
+    .no {
+      color: var(--text-muted);
+    }
+
+    .highlight {
+      background: rgba(79, 70, 229, 0.1);
+    }
+
+    .highlight th,
+    .highlight td:first-child {
+      color: var(--accent-light);
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--accent-light);
+    }
+
+    .section p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .note {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .cta {
+      text-align: center;
+      padding: 3rem;
+      background: rgba(79, 70, 229, 0.1);
+      border-radius: 1rem;
+      margin-top: 2rem;
+    }
+
+    .cta h2 {
+      margin-bottom: 1rem;
+    }
+
+    .cta p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.875rem 1.75rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      background: var(--accent);
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent-light);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer a {
+      color: var(--accent-light);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .comparison-table {
+        font-size: 0.85rem;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 0.75rem 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="#4f46e5" />
+        <text x="20" y="26" text-anchor="middle" fill="white" font-family="system-ui" font-weight="bold" font-size="16">Q</text>
+      </svg>
+      QentriQ
+    </a>
+    <div class="nav-links">
+      <a href="/about/">About</a>
+      <a href="/compare/" class="active">Compare</a>
+      <a href="/pki/readme/">Docs</a>
+      <a href="/lab/overview/">Lab</a>
+      <a href="https://github.com/remiblancher/post-quantum-pki" class="nav-github">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Compare Solutions</h1>
+    <p>
+      How QentriQ compares to other post-quantum cryptography implementations
+      for PKI and certificate management.
+    </p>
+  </section>
+
+  <div class="content">
+    <section class="section">
+      <h2>Feature Comparison</h2>
+      <p>A side-by-side comparison of post-quantum PKI capabilities.</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="highlight">QentriQ</th>
+            <th>OpenSSL 3.x</th>
+            <th>BouncyCastle</th>
+            <th>liboqs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pure implementation (no C deps)</td>
+            <td class="highlight"><span class="check">Yes (Go)</span></td>
+            <td><span class="no">No (C)</span></td>
+            <td><span class="check">Yes (Java)</span></td>
+            <td><span class="no">No (C)</span></td>
+          </tr>
+          <tr>
+            <td>Single binary deployment</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="no">No (JVM)</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
+          <tr>
+            <td>CLI-first design</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="no">No (API)</span></td>
+            <td><span class="no">No (API)</span></td>
+          </tr>
+          <tr>
+            <td>Complete PKI toolkit</td>
+            <td class="highlight"><span class="check">CA, OCSP, TSA, CMS</span></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="partial">Library only</span></td>
+            <td><span class="no">Crypto only</span></td>
+          </tr>
+          <tr>
+            <td>ML-DSA (FIPS 204)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="check">Yes (3.5+)</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="check">Yes</span></td>
+          </tr>
+          <tr>
+            <td>ML-KEM (FIPS 203)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="check">Yes (3.5+)</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="check">Yes</span></td>
+          </tr>
+          <tr>
+            <td>SLH-DSA (FIPS 205)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="check">Yes (3.5+)</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="check">Yes</span></td>
+          </tr>
+          <tr>
+            <td>Hybrid Certificates (Catalyst)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="partial">Manual</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
+          <tr>
+            <td>Composite Signatures</td>
+            <td class="highlight"><span class="check">IETF draft-13</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
+          <tr>
+            <td>HSM Support (PKCS#11)</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="partial">Via JCA</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
+          <tr>
+            <td>OCSP Responder</td>
+            <td class="highlight"><span class="check">Built-in</span></td>
+            <td><span class="check">Yes</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
+          <tr>
+            <td>TSA Server</td>
+            <td class="highlight"><span class="check">Built-in</span></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
+          <tr>
+            <td>COSE/CWT Tokens</td>
+            <td class="highlight"><span class="check">Yes</span></td>
+            <td><span class="no">No</span></td>
+            <td><span class="partial">Partial</span></td>
+            <td><span class="no">No</span></td>
+          </tr>
+          <tr>
+            <td>Learning Resources</td>
+            <td class="highlight"><span class="check">QLAB Journey</span></td>
+            <td><span class="partial">Docs only</span></td>
+            <td><span class="partial">Docs only</span></td>
+            <td><span class="partial">Docs only</span></td>
+          </tr>
+          <tr>
+            <td>License</td>
+            <td class="highlight">Apache 2.0</td>
+            <td>Apache 2.0</td>
+            <td>MIT</td>
+            <td>MIT</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="note">
+        <strong>Note:</strong> This comparison is based on publicly available information as of February 2025.
+        Features and capabilities may have changed. We encourage you to verify current status with each project.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>When to Choose QentriQ</h2>
+      <p>QentriQ is ideal when you need:</p>
+      <ul style="color: var(--text-muted); margin-left: 1.5rem;">
+        <li style="margin-bottom: 0.5rem;">A complete, ready-to-use PKI solution (not just a crypto library)</li>
+        <li style="margin-bottom: 0.5rem;">Easy deployment with a single binary and no external dependencies</li>
+        <li style="margin-bottom: 0.5rem;">CLI-first workflow for automation and DevOps integration</li>
+        <li style="margin-bottom: 0.5rem;">Hybrid certificate support for gradual migration</li>
+        <li style="margin-bottom: 0.5rem;">A learning path to understand post-quantum PKI concepts</li>
+      </ul>
+    </section>
+
+    <div class="cta">
+      <h2>Ready to Get Started?</h2>
+      <p>Try QentriQ and build your first quantum-safe certificate in minutes.</p>
+      <a href="/pki/readme/" class="btn">Read the Documentation</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      Open source under Apache 2.0 license.
+      <a href="https://github.com/remiblancher/post-quantum-pki">Contribute on GitHub</a>
+    </p>
+  </footer>
+</body>
+</html>
