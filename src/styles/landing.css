@@ -9,10 +9,10 @@
 
 .landing-page {
   font-family: system-ui, -apple-system, sans-serif;
-  background-color: #020202;
+  background-color: rgb(23, 24, 28);
   background-image:
-    radial-gradient(rgb(52, 71, 255), rgba(0, 0, 0, 0) 50%),
-    radial-gradient(rgb(96, 165, 250), rgba(0, 0, 0, 0) 50%);
+    radial-gradient(rgb(19, 30, 79), rgba(0, 0, 0, 0) 50%),
+    radial-gradient(rgb(19, 30, 79), rgba(0, 0, 0, 0) 50%);
   background-size: 1192.8px 2410px, 1192.8px 2410px;
   background-position: -681.6px -602.5px, 340.8px -1205px;
   background-repeat: no-repeat;
