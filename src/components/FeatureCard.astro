@@ -1,0 +1,83 @@
+---
+/**
+ * FeatureCard - A card component with hover effects
+ * Inspired by Biome website design
+ */
+
+interface Props {
+  title: string;
+  icon?: string;
+  href?: string;
+}
+
+const { title, icon, href } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class="feature-card" href={href}>
+  {icon && <span class="feature-card-icon">{icon}</span>}
+  <h3 class="feature-card-title">{title}</h3>
+  <div class="feature-card-body">
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--q-space-3, 0.75rem);
+    padding: var(--q-space-6, 1.5rem);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--q-radius-lg, 0.75rem);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform var(--q-transition-normal, 200ms ease),
+      border-color var(--q-transition-normal, 200ms ease),
+      background var(--q-transition-normal, 200ms ease);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--sl-color-accent, #3447ff);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .feature-card-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .feature-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--q-gray-8, #f4f4f5);
+    margin: 0;
+  }
+
+  .feature-card-body {
+    color: var(--q-gray-6, #98989f);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Light mode */
+  :root[data-theme='light'] .feature-card {
+    background: transparent;
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  :root[data-theme='light'] .feature-card:hover {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  :root[data-theme='light'] .feature-card-title {
+    color: var(--q-gray-1, #020202);
+  }
+
+  :root[data-theme='light'] .feature-card-body {
+    color: var(--q-gray-5, #64646c);
+  }
+</style>

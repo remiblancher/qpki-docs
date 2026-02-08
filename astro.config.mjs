@@ -36,7 +36,10 @@ export default defineConfig({
 					},
 				}),
 			],
-			customCss: ['./src/styles/custom.css'],
+			customCss: [
+				'./src/styles/tokens.css',
+				'./src/styles/custom.css',
+			],
 			sidebar: [
 				{
 					label: 'navLinks',

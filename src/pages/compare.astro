@@ -1,8 +1,15 @@
 ---
+/**
+ * QentriQ Compare Page
+ * Redesigned with Biome-inspired design system
+ */
+import Header from '../components/Header.astro';
+import '../styles/tokens.css';
+import '../styles/landing.css';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,135 +17,64 @@
   <title>Compare - QentriQ</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --accent: #4f46e5;
-      --accent-light: #818cf8;
-      --bg-dark: #0f172a;
-      --bg-darker: #020617;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --green: #22c55e;
-      --yellow: #eab308;
-      --red: #ef4444;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: var(--bg-dark);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nav-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-logo svg {
-      width: 32px;
-      height: 32px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-    }
-
-    .nav-github {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--text) 0%, var(--accent-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .content {
+    .compare-content {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 4rem 2rem;
+      padding: var(--q-space-16, 4rem) var(--q-space-8, 2rem);
     }
 
+    .compare-section {
+      margin-bottom: var(--q-space-16, 4rem);
+    }
+
+    .compare-section h2 {
+      font-size: 1.75rem;
+      margin-bottom: var(--q-space-4, 1rem);
+      color: var(--sl-color-accent-high, #60a5fa);
+    }
+
+    :root[data-theme='light'] .compare-section h2 {
+      color: var(--sl-color-accent, #0065da);
+    }
+
+    .compare-section > p {
+      color: var(--q-gray-6, #98989f);
+      margin-bottom: var(--q-space-6, 1.5rem);
+    }
+
+    :root[data-theme='light'] .compare-section > p {
+      color: var(--q-gray-5, #64646c);
+    }
+
+    /* Table */
     .comparison-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 2rem 0;
+      margin: var(--q-space-8, 2rem) 0;
       font-size: 0.95rem;
     }
 
     .comparison-table th,
     .comparison-table td {
-      padding: 1rem;
+      padding: var(--q-space-4, 1rem);
       text-align: left;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid var(--q-gray-4, rgba(255, 255, 255, 0.1));
+    }
+
+    :root[data-theme='light'] .comparison-table th,
+    :root[data-theme='light'] .comparison-table td {
+      border-bottom-color: var(--q-gray-7, #dadadc);
     }
 
     .comparison-table th {
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--q-gray-3, rgba(255, 255, 255, 0.05));
       font-weight: 600;
       position: sticky;
       top: 0;
     }
 
-    .comparison-table th:first-child {
-      text-align: left;
+    :root[data-theme='light'] .comparison-table th {
+      background: var(--q-gray-7, #dadadc);
     }
 
     .comparison-table td:first-child {
@@ -146,152 +82,132 @@
     }
 
     .comparison-table tr:hover {
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--q-gray-3, rgba(255, 255, 255, 0.02));
+    }
+
+    :root[data-theme='light'] .comparison-table tr:hover {
+      background: var(--q-gray-8, #f4f4f5);
     }
 
     .check {
-      color: var(--green);
+      color: var(--q-color-success, #22c55e);
       font-weight: bold;
     }
 
     .partial {
-      color: var(--yellow);
+      color: var(--q-color-warning, #eab308);
     }
 
     .no {
-      color: var(--text-muted);
+      color: var(--q-gray-5, #64646c);
     }
 
     .highlight {
-      background: rgba(79, 70, 229, 0.1);
+      background: rgba(52, 71, 255, 0.1);
     }
 
     .highlight th,
     .highlight td:first-child {
-      color: var(--accent-light);
+      color: var(--sl-color-accent-high, #60a5fa);
     }
 
-    .section {
-      margin-bottom: 4rem;
+    :root[data-theme='light'] .highlight {
+      background: rgba(0, 101, 218, 0.1);
     }
 
-    .section h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      color: var(--accent-light);
+    :root[data-theme='light'] .highlight th,
+    :root[data-theme='light'] .highlight td:first-child {
+      color: var(--sl-color-accent, #0065da);
     }
 
-    .section p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
+    /* Note */
     .note {
-      background: rgba(255, 255, 255, 0.02);
-      border-left: 3px solid var(--accent);
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
+      background: var(--q-gray-3, rgba(255, 255, 255, 0.02));
+      border-left: 3px solid var(--sl-color-accent, #3447ff);
+      padding: var(--q-space-4, 1rem) var(--q-space-6, 1.5rem);
+      margin: var(--q-space-8, 2rem) 0;
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: var(--q-gray-6, #98989f);
+      border-radius: 0 var(--q-radius-md, 0.5rem) var(--q-radius-md, 0.5rem) 0;
     }
 
+    :root[data-theme='light'] .note {
+      background: var(--q-gray-8, #f4f4f5);
+      color: var(--q-gray-4, #27272a);
+    }
+
+    /* List */
+    .compare-list {
+      color: var(--q-gray-6, #98989f);
+      margin-left: var(--q-space-6, 1.5rem);
+    }
+
+    :root[data-theme='light'] .compare-list {
+      color: var(--q-gray-5, #64646c);
+    }
+
+    .compare-list li {
+      margin-bottom: var(--q-space-2, 0.5rem);
+    }
+
+    /* CTA */
     .cta {
       text-align: center;
-      padding: 3rem;
-      background: rgba(79, 70, 229, 0.1);
-      border-radius: 1rem;
-      margin-top: 2rem;
+      padding: var(--q-space-12, 3rem);
+      background: rgba(52, 71, 255, 0.1);
+      border-radius: var(--q-radius-xl, 1rem);
+      margin-top: var(--q-space-8, 2rem);
+    }
+
+    :root[data-theme='light'] .cta {
+      background: rgba(0, 101, 218, 0.1);
     }
 
     .cta h2 {
-      margin-bottom: 1rem;
+      margin-bottom: var(--q-space-4, 1rem);
+      color: var(--q-gray-8, #f4f4f5);
+    }
+
+    :root[data-theme='light'] .cta h2 {
+      color: var(--q-gray-1, #020202);
     }
 
     .cta p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      color: var(--q-gray-6, #98989f);
+      margin-bottom: var(--q-space-6, 1.5rem);
     }
 
-    .btn {
-      display: inline-block;
-      padding: 0.875rem 1.75rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      background: var(--accent);
-      color: white;
-      transition: background 0.2s;
-    }
-
-    .btn:hover {
-      background: var(--accent-light);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    footer a {
-      color: var(--accent-light);
+    :root[data-theme='light'] .cta p {
+      color: var(--q-gray-5, #64646c);
     }
 
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .nav-links {
-        gap: 1rem;
-      }
-
       .comparison-table {
         font-size: 0.85rem;
       }
 
       .comparison-table th,
       .comparison-table td {
-        padding: 0.75rem 0.5rem;
+        padding: var(--q-space-3, 0.75rem) var(--q-space-2, 0.5rem);
       }
     }
   </style>
 </head>
 
-<body>
-  <nav>
-    <a href="/" class="nav-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-        <circle cx="20" cy="20" r="18" fill="#4f46e5" />
-        <text x="20" y="26" text-anchor="middle" fill="white" font-family="system-ui" font-weight="bold" font-size="16">Q</text>
-      </svg>
-      QentriQ
-    </a>
-    <div class="nav-links">
-      <a href="/about/">About</a>
-      <a href="/compare/" class="active">Compare</a>
-      <a href="/pki/readme/">Docs</a>
-      <a href="/lab/overview/">Lab</a>
-      <a href="https://github.com/remiblancher/post-quantum-pki" class="nav-github">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-        GitHub
-      </a>
-    </div>
-  </nav>
+<body class="landing-page">
+  <Header />
 
-  <section class="hero">
-    <h1>Compare Solutions</h1>
-    <p>
+  <!-- Hero -->
+  <section class="landing-hero">
+    <h1 class="animate-in">Compare Solutions</h1>
+    <p class="animate-in" style="animation-delay: 0.1s">
       How QentriQ compares to other post-quantum cryptography implementations
       for PKI and certificate management.
     </p>
   </section>
 
-  <div class="content">
-    <section class="section">
+  <div class="compare-content">
+    <section class="compare-section">
       <h2>Feature Comparison</h2>
       <p>A side-by-side comparison of post-quantum PKI capabilities.</p>
 
@@ -420,26 +336,32 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="compare-section">
       <h2>When to Choose QentriQ</h2>
       <p>QentriQ is ideal when you need:</p>
-      <ul style="color: var(--text-muted); margin-left: 1.5rem;">
-        <li style="margin-bottom: 0.5rem;">A complete, ready-to-use PKI solution (not just a crypto library)</li>
-        <li style="margin-bottom: 0.5rem;">Easy deployment with a single binary and no external dependencies</li>
-        <li style="margin-bottom: 0.5rem;">CLI-first workflow for automation and DevOps integration</li>
-        <li style="margin-bottom: 0.5rem;">Hybrid certificate support for gradual migration</li>
-        <li style="margin-bottom: 0.5rem;">A learning path to understand post-quantum PKI concepts</li>
+      <ul class="compare-list">
+        <li>A complete, ready-to-use PKI solution (not just a crypto library)</li>
+        <li>Easy deployment with a single binary and no external dependencies</li>
+        <li>CLI-first workflow for automation and DevOps integration</li>
+        <li>Hybrid certificate support for gradual migration</li>
+        <li>A learning path to understand post-quantum PKI concepts</li>
       </ul>
     </section>
 
     <div class="cta">
       <h2>Ready to Get Started?</h2>
       <p>Try QentriQ and build your first quantum-safe certificate in minutes.</p>
-      <a href="/pki/readme/" class="btn">Read the Documentation</a>
+      <a href="/qpki/getting-started/quick-start/" class="btn btn-primary">
+        Read the Documentation
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
   </div>
 
-  <footer>
+  <!-- Footer -->
+  <footer class="landing-footer">
     <p>
       Open source under Apache 2.0 license.
       <a href="https://github.com/remiblancher/post-quantum-pki">Contribute on GitHub</a>

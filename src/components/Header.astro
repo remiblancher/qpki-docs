@@ -1,0 +1,488 @@
+---
+/**
+ * Header - Biome-style navigation bar
+ * Shared across all landing pages
+ */
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="header">
+  <nav class="header-nav">
+    <a href="/" class="header-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="32" height="32">
+        <circle cx="20" cy="20" r="18" fill="#3447ff" />
+        <text x="20" y="26" text-anchor="middle" fill="white" font-family="system-ui" font-weight="bold" font-size="16">Q</text>
+      </svg>
+      <span class="header-logo-text">QentriQ</span>
+    </a>
+
+    <div class="header-links">
+      <a href="/qpki/getting-started/quick-start/" class="header-link">Docs</a>
+      <a href="/qlab/overview/" class="header-link">Playground</a>
+      <a href="/compare/" class="header-link">Compare</a>
+      <a href="/about/" class="header-link">About</a>
+      <a href="/blog/" class="header-link">Blog</a>
+    </div>
+
+    <div class="header-actions">
+      <button class="header-search" aria-label="Search" data-search-trigger>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <span class="header-search-text">Search</span>
+        <kbd class="header-search-kbd">
+          <span class="header-search-kbd-meta">Ctrl</span>K
+        </kbd>
+      </button>
+
+      <ThemeToggle />
+
+      <a href="https://github.com/remiblancher/post-quantum-pki" class="header-github" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- Search Modal -->
+<div class="search-modal" id="search-modal" aria-hidden="true">
+  <div class="search-backdrop" data-close-search></div>
+  <div class="search-dialog" role="dialog" aria-label="Search">
+    <div class="search-header">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input
+        type="search"
+        class="search-input"
+        placeholder="Search documentation..."
+        id="search-input"
+        autocomplete="off"
+      />
+      <kbd class="search-esc">Esc</kbd>
+    </div>
+    <div class="search-results" id="search-results">
+      <div class="search-empty">Type to search...</div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(2, 2, 2, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  :root[data-theme='light'] .header {
+    background: rgba(248, 250, 252, 0.8);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    gap: 2rem;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--q-gray-8, #f4f4f5);
+    text-decoration: none;
+  }
+
+  :root[data-theme='light'] .header-logo {
+    color: var(--q-gray-1, #020202);
+  }
+
+  .header-logo-text {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .header-logo-text {
+      display: inline;
+    }
+  }
+
+  .header-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .header-link {
+    color: var(--q-gray-6, #98989f);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 150ms ease;
+  }
+
+  .header-link:hover {
+    color: var(--q-gray-8, #f4f4f5);
+  }
+
+  :root[data-theme='light'] .header-link {
+    color: var(--q-gray-5, #64646c);
+  }
+
+  :root[data-theme='light'] .header-link:hover {
+    color: var(--q-gray-1, #020202);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .header-search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: var(--q-gray-6, #98989f);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .header-search:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  :root[data-theme='light'] .header-search {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--q-gray-5, #64646c);
+  }
+
+  :root[data-theme='light'] .header-search:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .header-search-text {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .header-search-text {
+      display: inline;
+    }
+  }
+
+  .header-search-kbd {
+    display: none;
+    padding: 0.125rem 0.375rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-family: inherit;
+  }
+
+  @media (min-width: 768px) {
+    .header-search-kbd {
+      display: inline-flex;
+      gap: 0.125rem;
+    }
+  }
+
+  :root[data-theme='light'] .header-search-kbd {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .header-search-kbd-meta {
+    font-size: 0.625rem;
+  }
+
+  .header-github {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: var(--q-gray-6, #98989f);
+    border-radius: 0.5rem;
+    transition: all 150ms ease;
+  }
+
+  .header-github:hover {
+    color: var(--q-gray-8, #f4f4f5);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  :root[data-theme='light'] .header-github {
+    color: var(--q-gray-5, #64646c);
+  }
+
+  :root[data-theme='light'] .header-github:hover {
+    color: var(--q-gray-1, #020202);
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  @media (max-width: 639px) {
+    .header-nav {
+      padding: 0.75rem 1rem;
+      gap: 1rem;
+    }
+
+    .header-links {
+      gap: 1rem;
+    }
+
+    .header-link {
+      font-size: 0.875rem;
+    }
+  }
+
+  /* Search Modal */
+  .search-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 10vh;
+  }
+
+  .search-modal[aria-hidden="false"] {
+    display: flex;
+  }
+
+  .search-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
+
+  .search-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 1rem;
+    background: var(--q-gray-2, #0e0e10);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  :root[data-theme='light'] .search-dialog {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .search-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--q-gray-6, #98989f);
+  }
+
+  :root[data-theme='light'] .search-header {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .search-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    color: var(--q-gray-8, #f4f4f5);
+  }
+
+  .search-input::placeholder {
+    color: var(--q-gray-5, #64646c);
+  }
+
+  :root[data-theme='light'] .search-input {
+    color: var(--q-gray-1, #020202);
+  }
+
+  .search-esc {
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--q-gray-5, #64646c);
+  }
+
+  :root[data-theme='light'] .search-esc {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .search-results {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0.5rem;
+  }
+
+  .search-empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--q-gray-5, #64646c);
+  }
+
+  .search-result {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--q-gray-8, #f4f4f5);
+    transition: background 150ms ease;
+  }
+
+  .search-result:hover,
+  .search-result:focus {
+    background: rgba(255, 255, 255, 0.05);
+    outline: none;
+  }
+
+  :root[data-theme='light'] .search-result {
+    color: var(--q-gray-1, #020202);
+  }
+
+  :root[data-theme='light'] .search-result:hover,
+  :root[data-theme='light'] .search-result:focus {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .search-result-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .search-result-excerpt {
+    font-size: 0.875rem;
+    color: var(--q-gray-5, #64646c);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .search-no-results {
+    padding: 2rem;
+    text-align: center;
+    color: var(--q-gray-5, #64646c);
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    const modal = document.getElementById('search-modal');
+    const input = document.getElementById('search-input');
+    const results = document.getElementById('search-results');
+    let pagefind = null;
+
+    // Load Pagefind
+    async function loadPagefind() {
+      if (pagefind) return pagefind;
+      try {
+        pagefind = await import('/pagefind/pagefind.js');
+        await pagefind.init();
+        return pagefind;
+      } catch (e) {
+        console.warn('Pagefind not available:', e);
+        return null;
+      }
+    }
+
+    // Open modal
+    function openSearch() {
+      modal.setAttribute('aria-hidden', 'false');
+      input.focus();
+      document.body.style.overflow = 'hidden';
+      loadPagefind();
+    }
+
+    // Close modal
+    function closeSearch() {
+      modal.setAttribute('aria-hidden', 'true');
+      input.value = '';
+      results.innerHTML = '<div class="search-empty">Type to search...</div>';
+      document.body.style.overflow = '';
+    }
+
+    // Search
+    async function doSearch(query) {
+      if (!query.trim()) {
+        results.innerHTML = '<div class="search-empty">Type to search...</div>';
+        return;
+      }
+
+      const pf = await loadPagefind();
+      if (!pf) {
+        results.innerHTML = '<div class="search-no-results">Search not available on this page. <a href="/qpki/getting-started/quick-start/" style="color: var(--sl-color-accent-high);">Go to docs</a></div>';
+        return;
+      }
+
+      const search = await pf.search(query);
+
+      if (search.results.length === 0) {
+        results.innerHTML = '<div class="search-no-results">No results found</div>';
+        return;
+      }
+
+      const items = await Promise.all(search.results.slice(0, 8).map(r => r.data()));
+
+      results.innerHTML = items.map(item => `
+        <a href="${item.url}" class="search-result">
+          <div class="search-result-title">${item.meta?.title || item.url}</div>
+          <div class="search-result-excerpt">${item.excerpt || ''}</div>
+        </a>
+      `).join('');
+    }
+
+    // Event listeners
+    document.querySelector('[data-search-trigger]')?.addEventListener('click', openSearch);
+    document.querySelector('[data-close-search]')?.addEventListener('click', closeSearch);
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+      }
+      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+        closeSearch();
+      }
+    });
+
+    let debounceTimer;
+    input?.addEventListener('input', (e) => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => doSearch(e.target.value), 200);
+    });
+
+    // Close on result click
+    results?.addEventListener('click', (e) => {
+      if (e.target.closest('.search-result')) {
+        closeSearch();
+      }
+    });
+  })();
+</script>

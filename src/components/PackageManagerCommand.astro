@@ -1,0 +1,251 @@
+---
+/**
+ * PackageManagerCommand - Tabbed installation commands
+ * Similar to Biome's npm/pnpm/bun tabs
+ */
+
+interface Props {
+  goCommand?: string;
+  dockerCommand?: string;
+  brewCommand?: string;
+}
+
+const {
+  goCommand = 'go install github.com/remiblancher/post-quantum-pki/cmd/qpki@latest',
+  dockerCommand = 'docker pull ghcr.io/remiblancher/qpki:latest',
+  brewCommand = 'brew install qentriq/tap/qpki'
+} = Astro.props;
+---
+
+<div class="pkg-cmd">
+  <div class="pkg-cmd-tabs" role="tablist">
+    <button
+      class="pkg-cmd-tab active"
+      role="tab"
+      aria-selected="true"
+      data-tab="go"
+    >
+      Go
+    </button>
+    <button
+      class="pkg-cmd-tab"
+      role="tab"
+      aria-selected="false"
+      data-tab="docker"
+    >
+      Docker
+    </button>
+    <button
+      class="pkg-cmd-tab"
+      role="tab"
+      aria-selected="false"
+      data-tab="brew"
+    >
+      Homebrew
+    </button>
+  </div>
+
+  <div class="pkg-cmd-panels">
+    <div class="pkg-cmd-panel active" data-panel="go">
+      <code class="pkg-cmd-code">
+        <span class="prompt">$</span> {goCommand}
+      </code>
+      <button class="pkg-cmd-copy" aria-label="Copy command" data-command={goCommand}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="pkg-cmd-panel" data-panel="docker">
+      <code class="pkg-cmd-code">
+        <span class="prompt">$</span> {dockerCommand}
+      </code>
+      <button class="pkg-cmd-copy" aria-label="Copy command" data-command={dockerCommand}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="pkg-cmd-panel" data-panel="brew">
+      <code class="pkg-cmd-code">
+        <span class="prompt">$</span> {brewCommand}
+      </code>
+      <button class="pkg-cmd-copy" aria-label="Copy command" data-command={brewCommand}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .pkg-cmd {
+    display: inline-block;
+    text-align: left;
+    background: var(--q-gray-3, #202022);
+    border-radius: var(--q-radius-lg, 0.75rem);
+    overflow: hidden;
+    min-width: 400px;
+    max-width: 100%;
+  }
+
+  .pkg-cmd-tabs {
+    display: flex;
+    background: var(--q-gray-4, #27272a);
+    border-bottom: 1px solid var(--q-gray-4, #27272a);
+  }
+
+  .pkg-cmd-tab {
+    padding: var(--q-space-3, 0.75rem) var(--q-space-4, 1rem);
+    background: none;
+    border: none;
+    color: var(--q-gray-6, #98989f);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      color var(--q-transition-fast, 150ms ease),
+      background var(--q-transition-fast, 150ms ease);
+  }
+
+  .pkg-cmd-tab:hover {
+    color: var(--q-gray-8, #f4f4f5);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .pkg-cmd-tab.active {
+    color: var(--sl-color-accent-high, #60a5fa);
+    background: var(--q-gray-3, #202022);
+  }
+
+  .pkg-cmd-panels {
+    position: relative;
+  }
+
+  .pkg-cmd-panel {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--q-space-4, 1rem);
+    padding: var(--q-space-4, 1rem) var(--q-space-6, 1.5rem);
+  }
+
+  .pkg-cmd-panel.active {
+    display: flex;
+  }
+
+  .pkg-cmd-code {
+    font-family: var(--q-font-mono, ui-monospace, monospace);
+    font-size: 0.9rem;
+    color: var(--q-gray-8, #f4f4f5);
+    white-space: nowrap;
+    overflow-x: auto;
+  }
+
+  .pkg-cmd-code .prompt {
+    color: var(--sl-color-accent-high, #60a5fa);
+    margin-right: var(--q-space-2, 0.5rem);
+  }
+
+  .pkg-cmd-copy {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--q-radius-sm, 0.25rem);
+    color: var(--q-gray-6, #98989f);
+    cursor: pointer;
+    transition:
+      background var(--q-transition-fast, 150ms ease),
+      color var(--q-transition-fast, 150ms ease);
+  }
+
+  .pkg-cmd-copy:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--q-gray-8, #f4f4f5);
+  }
+
+  .pkg-cmd-copy.copied {
+    color: var(--q-color-success, #22c55e);
+  }
+
+  /* Light mode */
+  :root[data-theme='light'] .pkg-cmd {
+    background: #202022;
+  }
+
+  :root[data-theme='light'] .pkg-cmd-tabs {
+    background: #334155;
+  }
+
+  @media (max-width: 500px) {
+    .pkg-cmd {
+      min-width: 100%;
+    }
+
+    .pkg-cmd-code {
+      font-size: 0.8rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    const STORAGE_KEY = 'qentriq-pkg-manager';
+
+    // Get all tab containers
+    document.querySelectorAll('.pkg-cmd').forEach(container => {
+      const tabs = container.querySelectorAll('.pkg-cmd-tab');
+      const panels = container.querySelectorAll('.pkg-cmd-panel');
+      const copyButtons = container.querySelectorAll('.pkg-cmd-copy');
+
+      // Restore saved preference
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        activateTab(saved);
+      }
+
+      // Tab click handlers
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabId = tab.dataset.tab;
+          activateTab(tabId);
+          localStorage.setItem(STORAGE_KEY, tabId);
+        });
+      });
+
+      // Copy button handlers
+      copyButtons.forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const command = btn.dataset.command;
+          try {
+            await navigator.clipboard.writeText(command);
+            btn.classList.add('copied');
+            setTimeout(() => btn.classList.remove('copied'), 2000);
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        });
+      });
+
+      function activateTab(tabId) {
+        tabs.forEach(t => {
+          const isActive = t.dataset.tab === tabId;
+          t.classList.toggle('active', isActive);
+          t.setAttribute('aria-selected', isActive.toString());
+        });
+        panels.forEach(p => {
+          p.classList.toggle('active', p.dataset.panel === tabId);
+        });
+      }
+    });
+  })();
+</script>
