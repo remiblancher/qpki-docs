@@ -168,42 +168,43 @@
 }
 
 .btn-primary {
-  background: white;
-  color: #020202;
+  background: rgb(59, 130, 246);
+  color: white;
 }
 
 .btn-primary:hover {
-  background: #e5e5e5;
+  background: rgb(37, 99, 235);
 }
 
 .btn-secondary {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
 }
 
 .btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 :root[data-theme='light'] .btn-primary {
-  background: #020202;
+  background: rgb(0, 101, 218);
   color: white;
 }
 
 :root[data-theme='light'] .btn-primary:hover {
-  background: #1a1a1a;
+  background: rgb(0, 82, 178);
 }
 
 :root[data-theme='light'] .btn-secondary {
   color: #020202;
-  border-color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 :root[data-theme='light'] .btn-secondary:hover {
-  border-color: rgba(0, 0, 0, 0.6);
-  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.08);
 }
 
 /* ========================================
@@ -247,7 +248,7 @@
 .landing-code-block {
   display: inline-block;
   text-align: left;
-  background: var(--q-gray-3, #202022);
+  background: rgb(30, 30, 34);
   padding: var(--q-space-6, 1.5rem) var(--q-space-8, 2rem);
   border-radius: var(--q-radius-lg, 0.75rem);
   font-family: var(--q-font-mono, 'SF Mono', Monaco, 'Courier New', monospace);
@@ -288,7 +289,7 @@
   text-align: center;
   padding: var(--q-space-8, 2rem);
   color: var(--q-gray-6, #98989f);
-  border-top: 1px solid var(--q-gray-4, rgba(255, 255, 255, 0.05));
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .landing-footer a {
