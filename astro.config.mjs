@@ -41,7 +41,7 @@ export default defineConfig({
 				{
 					label: 'navLinks',
 					items: [
-						{ label: 'QPKI', link: '/qpki/getting-started/quick-start/' },
+						{ label: 'QPKI', link: '/qpki/getting-started/pki-basics/' },
 						{ label: 'QLAB', link: '/qlab/overview/' },
 					],
 				},
@@ -51,8 +51,9 @@ export default defineConfig({
 						{
 							label: 'Getting Started',
 							items: [
+								{ slug: 'qpki/getting-started/pki-basics' },
+								{ slug: 'qpki/getting-started/post-quantum' },
 								{ label: 'Quick Start', slug: 'qpki/getting-started/quick-start' },
-								{ slug: 'qpki/getting-started/concepts' },
 							],
 						},
 						{
@@ -93,7 +94,7 @@ export default defineConfig({
 							label: 'Reference',
 							collapsed: true,
 							items: [
-								{ slug: 'qpki/reference/cli-reference' },
+								{ slug: 'qpki/reference/cli' },
 								{ slug: 'qpki/reference/standards' },
 								{ slug: 'qpki/reference/troubleshooting' },
 								{ slug: 'qpki/reference/glossary' },
