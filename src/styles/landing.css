@@ -9,21 +9,13 @@
 
 .landing-page {
   font-family: system-ui, -apple-system, sans-serif;
-  background:
-    /* Gradient bleu principal en haut à droite */
-    radial-gradient(
-      ellipse 100% 80% at 70% 0%,
-      rgba(52, 71, 255, 0.18),
-      transparent 60%
-    ),
-    /* Gradient bleu secondaire à gauche */
-    radial-gradient(
-      ellipse 80% 60% at 0% 50%,
-      rgba(96, 165, 250, 0.12),
-      transparent 50%
-    ),
-    /* Fond noir de base */
-    #020202;
+  background-color: #020202;
+  background-image:
+    radial-gradient(rgb(52, 71, 255), rgba(0, 0, 0, 0) 50%),
+    radial-gradient(rgb(96, 165, 250), rgba(0, 0, 0, 0) 50%);
+  background-size: 1192.8px 2410px, 1192.8px 2410px;
+  background-position: -681.6px -602.5px, 340.8px -1205px;
+  background-repeat: no-repeat;
   color: var(--q-gray-8, #f4f4f5);
   line-height: 1.6;
   min-height: 100vh;
@@ -36,18 +28,13 @@
 
 /* Light mode */
 :root[data-theme='light'] .landing-page {
-  background:
-    radial-gradient(
-      ellipse 100% 80% at 70% 0%,
-      rgba(0, 101, 218, 0.12),
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse 80% 60% at 0% 50%,
-      rgba(0, 101, 218, 0.08),
-      transparent 50%
-    ),
-    #f8fafc;
+  background-color: #ffffff;
+  background-image:
+    radial-gradient(rgb(194, 217, 250), rgba(0, 0, 0, 0) 50%),
+    radial-gradient(rgb(194, 217, 250), rgba(0, 0, 0, 0) 50%);
+  background-size: 1192.8px 2410px, 1192.8px 2410px;
+  background-position: -681.6px -602.5px, 340.8px -1205px;
+  background-repeat: no-repeat;
   color: var(--q-gray-1, #020202);
 }
 
@@ -137,18 +124,12 @@
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 400;
   margin-bottom: var(--q-space-6, 1.5rem);
-  background: linear-gradient(135deg, var(--q-gray-8, #f4f4f5) 0%, var(--sl-color-accent-high, #60a5fa) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--q-gray-8, #f4f4f5);
   line-height: 1.1;
 }
 
 :root[data-theme='light'] .landing-hero h1 {
-  background: linear-gradient(135deg, var(--q-gray-1, #020202) 0%, var(--sl-color-accent, #0065da) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--q-gray-1, #020202);
 }
 
 .landing-hero p {
