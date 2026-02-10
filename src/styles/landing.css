@@ -9,10 +9,10 @@
 
 .landing-page {
   font-family: system-ui, -apple-system, sans-serif;
-  background-color: rgb(23, 24, 28);
+  background-color: rgb(13, 13, 13);
   background-image:
-    radial-gradient(rgb(74, 26, 53), rgba(0, 0, 0, 0) 50%),
-    radial-gradient(rgb(74, 26, 53), rgba(0, 0, 0, 0) 50%);
+    radial-gradient(rgb(58, 28, 113), rgba(0, 0, 0, 0) 50%),
+    radial-gradient(rgb(215, 109, 119), rgba(0, 0, 0, 0) 50%);
   background-size:
     1192.8px 2410px,
     1192.8px 2410px;
@@ -34,8 +34,8 @@
 :root[data-theme='light'] .landing-page {
   background-color: #ffffff;
   background-image:
-    radial-gradient(rgb(252, 228, 236), rgba(0, 0, 0, 0) 50%),
-    radial-gradient(rgb(252, 228, 236), rgba(0, 0, 0, 0) 50%);
+    radial-gradient(rgb(232, 218, 250), rgba(0, 0, 0, 0) 50%),
+    radial-gradient(rgb(245, 220, 220), rgba(0, 0, 0, 0) 50%);
   background-size:
     1192.8px 2410px,
     1192.8px 2410px;
@@ -160,11 +160,12 @@
 }
 
 .landing-hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.8rem, 8vw, 4.8rem);
   font-weight: 600;
   margin-bottom: var(--q-space-6, 1.5rem);
   color: var(--q-gray-8, #f4f4f5);
-  line-height: 1.1;
+  line-height: 1.0;
+  letter-spacing: -2px;
 }
 
 :root[data-theme='light'] .landing-hero h1 {
@@ -206,13 +207,23 @@
   gap: 0.5rem;
 }
 
+.btn svg {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover svg {
+  transform: translateX(4px);
+}
+
 .btn-primary {
-  background: rgb(233, 30, 99);
+  background: #D76D77;
   color: white;
 }
 
 .btn-primary:hover {
-  background: rgb(194, 24, 91);
+  background: #c45d67;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(215, 109, 119, 0.4);
 }
 
 .btn-secondary {
@@ -224,15 +235,16 @@
 .btn-secondary:hover {
   border-color: rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 :root[data-theme='light'] .btn-primary {
-  background: rgb(194, 24, 91);
+  background: #D76D77;
   color: white;
 }
 
 :root[data-theme='light'] .btn-primary:hover {
-  background: rgb(136, 14, 79);
+  background: #b85a63;
 }
 
 :root[data-theme='light'] .btn-secondary {

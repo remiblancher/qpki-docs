@@ -1,7 +1,7 @@
 ---
 /**
  * FeatureCard - A card component with hover effects
- * Inspired by Biome website design
+ * Inspired by DocKit Astro design
  */
 
 interface Props {
@@ -24,15 +24,16 @@ const Tag = href ? 'a' : 'div';
 
 <style>
   .feature-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: var(--q-space-3, 0.75rem);
     padding: var(--q-space-6, 1.5rem);
     background: rgba(23, 24, 28, 0.8);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(233, 30, 99, 0.35);
+    border: 1px solid rgba(215, 109, 119, 0.35);
     border-radius: var(--q-radius-lg, 0.75rem);
-    box-shadow: 0 0 20px rgba(233, 30, 99, 0.1);
+    box-shadow: 0 0 20px rgba(215, 109, 119, 0.1);
     text-decoration: none;
     color: inherit;
     transition:
@@ -42,10 +43,40 @@ const Tag = href ? 'a' : 'div';
       background var(--q-transition-normal, 200ms ease);
   }
 
+  /* Gradient border effect */
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--q-radius-lg, 0.75rem);
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      #3a1c71 0%,
+      #D76D77 50%,
+      #ffca7b 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .feature-card:hover::before {
+    opacity: 1;
+  }
+
   .feature-card:hover {
     transform: translateY(-2px);
-    border-color: var(--sl-color-accent, #E91E63);
-    box-shadow: 0 0 30px rgba(233, 30, 99, 0.2);
+    border-color: transparent;
+    box-shadow: 0 0 30px rgba(215, 109, 119, 0.25);
     background: rgba(23, 24, 28, 0.95);
   }
 
@@ -70,14 +101,23 @@ const Tag = href ? 'a' : 'div';
   /* Light mode */
   :root[data-theme='light'] .feature-card {
     background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(194, 24, 91, 0.3);
-    box-shadow: 0 0 20px rgba(194, 24, 91, 0.08);
+    border-color: rgba(215, 109, 119, 0.3);
+    box-shadow: 0 0 20px rgba(215, 109, 119, 0.08);
   }
 
   :root[data-theme='light'] .feature-card:hover {
     background: rgba(255, 255, 255, 0.95);
-    border-color: var(--sl-color-accent, #C2185B);
-    box-shadow: 0 0 30px rgba(194, 24, 91, 0.15);
+    border-color: transparent;
+    box-shadow: 0 0 30px rgba(215, 109, 119, 0.15);
+  }
+
+  :root[data-theme='light'] .feature-card::before {
+    background: linear-gradient(
+      135deg,
+      #3a1c71 0%,
+      #D76D77 50%,
+      #ffca7b 100%
+    );
   }
 
   :root[data-theme='light'] .feature-card-title {
@@ -95,8 +135,17 @@ const Tag = href ? 'a' : 'div';
   }
 
   :global(body.blue-palette) .feature-card:hover {
-    border-color: #3447ff;
+    border-color: transparent;
     box-shadow: 0 0 30px rgba(52, 71, 255, 0.2);
+  }
+
+  :global(body.blue-palette) .feature-card::before {
+    background: linear-gradient(
+      135deg,
+      #1a237e 0%,
+      #3447ff 50%,
+      #7986cb 100%
+    );
   }
 
   :global(:root[data-theme='light'] body.blue-palette) .feature-card {
@@ -105,7 +154,16 @@ const Tag = href ? 'a' : 'div';
   }
 
   :global(:root[data-theme='light'] body.blue-palette) .feature-card:hover {
-    border-color: #0065da;
+    border-color: transparent;
     box-shadow: 0 0 30px rgba(0, 101, 218, 0.15);
+  }
+
+  :global(:root[data-theme='light'] body.blue-palette) .feature-card::before {
+    background: linear-gradient(
+      135deg,
+      #0d47a1 0%,
+      #0065da 50%,
+      #42a5f5 100%
+    );
   }
 </style>
