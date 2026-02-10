@@ -1,19 +1,71 @@
 ---
-import Default from "@astrojs/starlight/components/SiteTitle.astro";
 import NavLinks from "./NavLinks.astro";
-
 import type { Props } from "@astrojs/starlight/props";
 ---
 
-<div>
-  <Default />
+<div class="site-title-wrapper">
+  <a href="/" class="site-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="28" height="28">
+      <circle class="logo-circle" cx="20" cy="20" r="18" fill="#D76D77" />
+      <text x="20" y="26" text-anchor="middle" fill="white" font-family="system-ui" font-weight="bold" font-size="16">Q</text>
+    </svg>
+    <span class="logo-text">QentriQ</span>
+  </a>
+
+  <span class="separator"></span>
+
   <NavLinks position="leading" {...Astro.props} />
 </div>
 
 <style>
-  div {
+  .site-title-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--sl-nav-gap);
+    gap: 1rem;
+    padding-left: 0.5rem;
+  }
+
+  .site-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--sl-color-white);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .site-logo:hover {
+    opacity: 0.9;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .logo-text {
+      display: inline;
+    }
+  }
+
+  .separator {
+    width: 1px;
+    height: 1.5rem;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  :global([data-theme='light']) .separator {
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  /* Light mode */
+  :global([data-theme='light']) .site-logo {
+    color: #17181c;
+  }
+
+  /* Blue palette - change logo color */
+  :global(body.blue-palette) .logo-circle {
+    fill: #3447ff;
   }
 </style>

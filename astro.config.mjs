@@ -17,6 +17,7 @@ export default defineConfig({
 			components: {
 				Head: './src/components/Head.astro',
 				SiteTitle: './src/components/SiteTitle.astro',
+				PageFrame: './src/components/PageFrame.astro',
 			},
 			logo: {
 				light: './src/assets/logo-light.svg',
@@ -45,8 +46,11 @@ export default defineConfig({
 				{
 					label: 'navLinks',
 					items: [
-						{ label: 'QPKI', link: '/qpki/getting-started/installation/' },
-						{ label: 'QLAB', link: '/qlab/overview/' },
+						{ label: 'Docs', link: '/qpki/getting-started/quick-start/' },
+						{ label: 'Playground', link: '/qlab/overview/' },
+						{ label: 'Suite', link: '/suite/' },
+						{ label: 'About', link: '/about/' },
+						{ label: 'Blog', link: '/blog/' },
 					],
 				},
 				{

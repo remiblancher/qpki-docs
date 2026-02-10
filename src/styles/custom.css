@@ -1,13 +1,293 @@
-/* Qentriq Custom Styles */
+/* QentriQ - Style Biome */
 
-/* Cacher le dropdown multiSidebar */
+/* ========================================
+ * DARK MODE (défaut)
+ * ======================================== */
+:root {
+	/* Couleurs de fond */
+	--sl-color-bg: #17181c;
+	--sl-color-black: #17181c;
+	--sl-color-bg-nav: #24272f;
+	--sl-color-bg-sidebar: #24272f;
+
+	/* Texte */
+	--sl-color-white: #ffffff;
+	--sl-color-text: #eceef2;
+
+	/* Échelle de gris */
+	--sl-color-gray-1: #eceef2;
+	--sl-color-gray-2: #c0c2c7;
+	--sl-color-gray-3: #888b96;
+	--sl-color-gray-4: #545861;
+	--sl-color-gray-5: #353841;
+	--sl-color-gray-6: #24272f;
+
+	/* Bordures */
+	--sl-color-hairline: #353841;
+	--sl-color-hairline-light: #353841;
+}
+
+/* ========================================
+ * LIGHT MODE
+ * ======================================== */
+:root[data-theme='light'] {
+	/* Couleurs de fond */
+	--sl-color-bg: #ffffff;
+	--sl-color-black: #ffffff;
+	--sl-color-bg-nav: #f5f6f8;
+	--sl-color-bg-sidebar: #f5f6f8;
+
+	/* Texte */
+	--sl-color-white: #17181c;
+	--sl-color-text: #24272f;
+
+	/* Échelle de gris (inversée) */
+	--sl-color-gray-1: #24272f;
+	--sl-color-gray-2: #353841;
+	--sl-color-gray-3: #545861;
+	--sl-color-gray-4: #888b96;
+	--sl-color-gray-5: #c0c2c7;
+	--sl-color-gray-6: #eceef2;
+	--sl-color-gray-7: #f5f6f8;
+
+	/* Bordures */
+	--sl-color-hairline: #c0c2c7;
+	--sl-color-hairline-light: #eceef2;
+}
+
+/* ========================================
+ * HEADER
+ * ======================================== */
+header.header {
+	background-color: var(--sl-color-bg-nav) !important;
+	border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+/* ========================================
+ * SIDEBAR
+ * ======================================== */
+.sidebar,
+.sidebar-pane,
+nav.sidebar {
+	background-color: var(--sl-color-bg-sidebar) !important;
+}
+
+/* ========================================
+ * CONTENU PRINCIPAL
+ * ======================================== */
+body,
+.page,
+.main-frame,
+.main-pane,
+.content-panel {
+	background-color: var(--sl-color-bg) !important;
+}
+
+/* ========================================
+ * CODE BLOCKS (style Biome/Prism)
+ * ======================================== */
+.expressive-code {
+	--ec-frm-edBg: #1d2026;
+	--ec-frm-termBg: #1d2026;
+	border-radius: 8px;
+	border: 1px solid var(--sl-color-hairline);
+}
+
+.expressive-code figure {
+	background-color: #1d2026 !important;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.expressive-code pre {
+	background-color: #1d2026 !important;
+	border-radius: 0;
+}
+
+/* Header des blocs de code (Terminal) */
+.expressive-code .header {
+	background-color: #282c34 !important;
+	border-bottom: 1px solid #353841;
+	padding: 8px 12px;
+}
+
+/* Bouton copier - style Biome */
+.expressive-code .copy {
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.expressive-code:hover .copy {
+	opacity: 1;
+}
+
+.expressive-code .copy button {
+	background-color: #353841 !important;
+	border: 1px solid #545861 !important;
+	border-radius: 4px;
+	color: #c0c2c7;
+	padding: 4px 8px;
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+
+.expressive-code .copy button:hover {
+	background-color: #545861 !important;
+	color: #ffffff;
+}
+
+/* Light mode code blocks - fond CLAIR comme Biome */
+:root[data-theme='light'] .expressive-code {
+	--ec-frm-edBg: #eceef2;
+	--ec-frm-termBg: #e8eaed;
+	border: 1px solid #c0c2c7 !important;
+}
+
+:root[data-theme='light'] .expressive-code figure {
+	background-color: #eceef2 !important;
+}
+
+:root[data-theme='light'] .expressive-code pre {
+	background-color: #eceef2 !important;
+}
+
+:root[data-theme='light'] .expressive-code .header {
+	background-color: #e0e2e6 !important;
+	border-bottom: 1px solid #c0c2c7;
+}
+
+:root[data-theme='light'] .expressive-code .copy button {
+	background-color: rgba(0, 0, 0, 0.05) !important;
+	border: 1px solid #c0c2c7 !important;
+	color: #545861;
+}
+
+:root[data-theme='light'] .expressive-code .copy button:hover {
+	background-color: #e9ecef !important;
+	color: #24272f;
+}
+
+/* ========================================
+ * FILE TREE (arborescences)
+ * ======================================== */
+starlight-file-tree {
+	background-color: var(--sl-color-gray-6) !important;
+	border: 1px solid var(--sl-color-hairline);
+	border-radius: 8px;
+	padding: 1rem;
+}
+
+starlight-file-tree ul {
+	border-left-color: var(--sl-color-gray-5);
+}
+
+starlight-file-tree .directory > details > summary:hover {
+	color: var(--sl-color-accent);
+}
+
+/* ========================================
+ * CARTES ET LIENS
+ * ======================================== */
+.sl-link-card {
+	border: 1px solid var(--sl-color-gray-5);
+	background-color: var(--sl-color-gray-6);
+	border-radius: 8px;
+	transition: all 0.2s ease;
+}
+
+.sl-link-card:hover {
+	border-color: var(--sl-color-accent);
+	background-color: var(--sl-color-gray-5);
+}
+
+.card {
+	border: 1px solid var(--sl-color-gray-5);
+	background-color: var(--sl-color-bg) !important;
+	border-radius: 8px;
+}
+
+/* ========================================
+ * TABLES
+ * ======================================== */
+table {
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+th {
+	background-color: var(--sl-color-gray-6);
+	border-bottom: 1px solid var(--sl-color-gray-5);
+}
+
+td {
+	border-bottom: 1px solid var(--sl-color-gray-5);
+}
+
+tr:last-child td {
+	border-bottom: none;
+}
+
+/* ========================================
+ * ASIDES (notes, warnings, etc.)
+ * ======================================== */
+.starlight-aside {
+	border-radius: 8px;
+	border-left-width: 4px;
+}
+
+/* ========================================
+ * SCROLLBAR
+ * ======================================== */
+.sidebar-content {
+	scrollbar-width: thin;
+	scrollbar-color: var(--sl-color-gray-5) transparent;
+}
+
+.sidebar-content::-webkit-scrollbar {
+	width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+	background-color: var(--sl-color-gray-5);
+	border-radius: 3px;
+}
+
+/* ========================================
+ * INLINE CODE
+ * ======================================== */
+:not(pre) > code {
+	background-color: var(--sl-color-gray-5);
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 0.9em;
+}
+
+:root[data-theme='light'] :not(pre) > code {
+	background-color: var(--sl-color-gray-6);
+}
+
+/* ========================================
+ * LIENS
+ * ======================================== */
+a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+}
+
+/* ========================================
+ * MASQUER ÉLÉMENTS NON DÉSIRÉS
+ * ======================================== */
 .sidebar-switcher,
 [data-sidebar-switcher],
 select.sidebar-switcher {
 	display: none !important;
 }
 
-/* Cacher les badges GitHub dans la documentation */
 img[src*="shields.io"],
 img[src*="codecov.io"],
 img[src*="goreportcard.com"],
@@ -16,28 +296,19 @@ img[src*="github.com"][src*="badge"] {
 	display: none;
 }
 
-/* Code blocks */
-.expressive-code pre {
-	border-radius: 0.5rem;
-}
-
-/* Sidebar */
-.sidebar-content {
-	scrollbar-width: thin;
-}
-
-/* Links */
-a {
-	text-decoration-thickness: 1px;
-	text-underline-offset: 2px;
-}
-
-/* Hide GitHub navigation footer in QLAB journeys - Starlight has its own */
 .sl-markdown-content > p:last-of-type:has(a[href^="../"]):has(a[href*="README.md"]) {
 	display: none;
 }
 
-/* Hide first H1 - Starlight shows title from frontmatter, H1 is for GitHub */
 .sl-markdown-content > .sl-heading-wrapper.level-h1:first-child {
 	display: none;
+}
+
+/* GitHub icon in header */
+.social-icons a {
+	color: var(--sl-color-gray-3);
+}
+
+.social-icons a:hover {
+	color: var(--sl-color-white);
 }

@@ -1,0 +1,25 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/PageFrame.astro';
+import DocTabs from './DocTabs.astro';
+---
+
+<Default {...Astro.props}>
+  <slot name="header" slot="header" />
+  <slot name="sidebar" slot="sidebar" />
+  <slot />
+</Default>
+<DocTabs />
+
+<style is:global>
+  /* Ajuster le padding pour la sous-header */
+  .main-frame {
+    padding-top: calc(var(--sl-nav-height) + 2.5rem + var(--sl-mobile-toc-height)) !important;
+  }
+
+  /* Ajuster aussi la sidebar */
+  .sidebar-pane {
+    top: calc(var(--sl-nav-height) + 2.5rem) !important;
+    height: calc(100vh - var(--sl-nav-height) - 2.5rem) !important;
+  }
+</style>

@@ -10,16 +10,6 @@
 .landing-page {
   font-family: system-ui, -apple-system, sans-serif;
   background-color: rgb(13, 13, 13);
-  background-image:
-    radial-gradient(rgb(58, 28, 113), rgba(0, 0, 0, 0) 50%),
-    radial-gradient(rgb(215, 109, 119), rgba(0, 0, 0, 0) 50%);
-  background-size:
-    1192.8px 2410px,
-    1192.8px 2410px;
-  background-position:
-    -681.6px -602.5px,
-    340.8px -1205px;
-  background-repeat: no-repeat, no-repeat;
   color: var(--q-gray-8, #f4f4f5);
   line-height: 1.6;
   min-height: 100vh;
@@ -32,17 +22,7 @@
 
 /* Light mode */
 :root[data-theme='light'] .landing-page {
-  background-color: #ffffff;
-  background-image:
-    radial-gradient(rgb(232, 218, 250), rgba(0, 0, 0, 0) 50%),
-    radial-gradient(rgb(245, 220, 220), rgba(0, 0, 0, 0) 50%);
-  background-size:
-    1192.8px 2410px,
-    1192.8px 2410px;
-  background-position:
-    -681.6px -602.5px,
-    340.8px -1205px;
-  background-repeat: no-repeat, no-repeat;
+  background-color: #f5f5f5;
   color: var(--q-gray-1, #020202);
 }
 
@@ -442,15 +422,11 @@
  * ======================================== */
 
 body.blue-palette.landing-page {
-  background-image:
-    radial-gradient(rgb(19, 30, 79), rgba(0, 0, 0, 0) 50%),
-    radial-gradient(rgb(19, 30, 79), rgba(0, 0, 0, 0) 50%);
+  background-image: none;
 }
 
 :root[data-theme='light'] body.blue-palette.landing-page {
-  background-image:
-    radial-gradient(rgb(194, 217, 250), rgba(0, 0, 0, 0) 50%),
-    radial-gradient(rgb(194, 217, 250), rgba(0, 0, 0, 0) 50%);
+  background-image: none;
 }
 
 body.blue-palette .btn-primary {
