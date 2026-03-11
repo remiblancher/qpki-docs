@@ -6,23 +6,17 @@ import { remarkMdLinks } from './remark-md-links.mjs';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://qentriq.dev',
+	site: 'https://qpki.io',
 	markdown: {
 		remarkPlugins: [remarkMdLinks],
 	},
 	integrations: [
 		starlight({
-			title: 'QentriQ',
-			description: 'Quantum-Safe PKI in Go - Post-quantum X.509 infrastructure',
+			title: 'QPKI',
+			description: 'Post-Quantum X.509 PKI in Go — ML-DSA, ML-KEM, SLH-DSA',
 			components: {
 				Head: './src/components/Head.astro',
-				SiteTitle: './src/components/SiteTitle.astro',
-				PageFrame: './src/components/PageFrame.astro',
-			},
-			logo: {
-				light: './src/assets/logo-light.svg',
-				dark: './src/assets/logo-dark.svg',
-				replacesTitle: false,
+				Hero: './src/components/Hero.astro',
 			},
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/qentriq' },
@@ -48,9 +42,6 @@ export default defineConfig({
 					items: [
 						{ label: 'Docs', link: '/qpki/getting-started/quick-start/' },
 						{ label: 'Playground', link: '/qlab/overview/' },
-						{ label: 'Suite', link: '/suite/' },
-						{ label: 'About', link: '/about/' },
-						{ label: 'Blog', link: '/blog/' },
 					],
 				},
 				{
@@ -87,6 +78,7 @@ export default defineConfig({
 								{ slug: 'qpki/services/tsa' },
 								{ slug: 'qpki/services/cms' },
 								{ slug: 'qpki/services/cose' },
+								{ slug: 'qpki/services/ssh' },
 							],
 						},
 						{
@@ -120,8 +112,6 @@ export default defineConfig({
 							items: [
 								{ slug: 'qpki/dev/architecture' },
 								{ slug: 'qpki/dev/contributing' },
-								{ slug: 'qpki/dev/testing' },
-								{ slug: 'qpki/dev/interoperability' },
 							],
 						},
 					],

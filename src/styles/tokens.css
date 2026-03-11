@@ -5,24 +5,32 @@
 
 :root {
   /* ========================================
-   * ACCENT COLORS (DocKit Rose Corail)
-   * Dark mode defaults
+   * QUANTUM PALETTE - Dark Mode
+   * Deep Tech / Crypto-Agile Design
    * ======================================== */
-  --sl-color-accent-low: #2d1a22;
-  --sl-color-accent: #D76D77;
-  --sl-color-accent-high: #e8a5ac;
+  --q-dark-bg: #0A0E1F;
+  --q-deep-blue: #1A1A5E;
+  --q-quantum-pink: #FF55A3;
+  --q-cobalt: #005BC5;
+  --q-vaultinum-blue: #052b5d;
+  --q-vaultinum-light: #0a4080;
+
+  /* Accent colors (Starlight integration) */
+  --sl-color-accent-low: #2d1a3a;
+  --sl-color-accent: #FF55A3;
+  --sl-color-accent-high: #FF7BB8;
 
   /* ========================================
-   * GRAY SCALE (Biome-inspired)
+   * GRAY SCALE (Quantum-adapted)
    * ======================================== */
-  --q-gray-1: #020202;
-  --q-gray-2: #0e0e10;
-  --q-gray-3: #202022;
-  --q-gray-4: #27272a;
-  --q-gray-5: #64646c;
-  --q-gray-6: #98989f;
-  --q-gray-7: #dadadc;
-  --q-gray-8: #f4f4f5;
+  --q-gray-1: #0A0E1F;
+  --q-gray-2: #121630;
+  --q-gray-3: #1A1A5E;
+  --q-gray-4: #2A2A6E;
+  --q-gray-5: #6B7280;
+  --q-gray-6: #9CA3AF;
+  --q-gray-7: #D1D5DB;
+  --q-gray-8: #F5F7FA;
 
   /* ========================================
    * SEMANTIC COLORS
@@ -87,16 +95,29 @@
  * LIGHT MODE OVERRIDES
  * ======================================== */
 :root[data-theme='light'] {
-  --sl-color-accent-low: #f5e6e8;
-  --sl-color-accent: #D76D77;
-  --sl-color-accent-high: #a85058;
+  --q-dark-bg: #FFFFFF;
+  --q-deep-blue: #F5F7FA;
+  --sl-color-accent-low: #FFE5F0;
+  --sl-color-accent: #FF55A3;
+  --sl-color-accent-high: #D93D85;
+
+  --q-gray-1: #0A0E1F;
+  --q-gray-2: #1A1A5E;
+  --q-gray-3: #374151;
+  --q-gray-4: #6B7280;
+  --q-gray-5: #9CA3AF;
+  --q-gray-6: #D1D5DB;
+  --q-gray-7: #E5E7EB;
+  --q-gray-8: #F5F7FA;
 }
 
 /* Auto mode - respect system preference */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme='dark']) {
-    --sl-color-accent-low: #f5e6e8;
-    --sl-color-accent: #D76D77;
-    --sl-color-accent-high: #a85058;
+    --q-dark-bg: #FFFFFF;
+    --q-deep-blue: #F5F7FA;
+    --sl-color-accent-low: #FFE5F0;
+    --sl-color-accent: #FF55A3;
+    --sl-color-accent-high: #D93D85;
   }
 }

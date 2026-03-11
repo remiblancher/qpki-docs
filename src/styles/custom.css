@@ -1,10 +1,10 @@
 /* QentriQ - Style Biome */
 
 /* ========================================
- * DARK MODE (défaut)
+ * DARK MODE (défaut) - Quantum Design
  * ======================================== */
 :root {
-	/* Couleurs de fond */
+	/* Couleurs de fond - Biome style */
 	--sl-color-bg: #17181c;
 	--sl-color-black: #17181c;
 	--sl-color-bg-nav: #24272f;
@@ -56,14 +56,6 @@
 }
 
 /* ========================================
- * HEADER
- * ======================================== */
-header.header {
-	background-color: var(--sl-color-bg-nav) !important;
-	border-bottom: 1px solid var(--sl-color-hairline);
-}
-
-/* ========================================
  * SIDEBAR
  * ======================================== */
 .sidebar,
@@ -84,34 +76,34 @@ body,
 }
 
 /* ========================================
- * CODE BLOCKS (style Biome/Prism)
+ * CODE BLOCKS - Style Biome
  * ======================================== */
 .expressive-code {
-	--ec-frm-edBg: #1d2026;
-	--ec-frm-termBg: #1d2026;
+	--ec-frm-edBg: #24272f;
+	--ec-frm-termBg: #24272f;
 	border-radius: 8px;
-	border: 1px solid var(--sl-color-hairline);
+	border: 1px solid #353841;
 }
 
 .expressive-code figure {
-	background-color: #1d2026 !important;
+	background-color: #24272f !important;
 	border-radius: 8px;
 	overflow: hidden;
 }
 
 .expressive-code pre {
-	background-color: #1d2026 !important;
+	background-color: #24272f !important;
 	border-radius: 0;
 }
 
 /* Header des blocs de code (Terminal) */
 .expressive-code .header {
-	background-color: #282c34 !important;
+	background-color: #353841 !important;
 	border-bottom: 1px solid #353841;
 	padding: 8px 12px;
 }
 
-/* Bouton copier - style Biome */
+/* Bouton copier */
 .expressive-code .copy {
 	opacity: 0;
 	transition: opacity 0.2s ease;
@@ -136,34 +128,34 @@ body,
 	color: #ffffff;
 }
 
-/* Light mode code blocks - fond CLAIR comme Biome */
+/* Light mode code blocks */
 :root[data-theme='light'] .expressive-code {
-	--ec-frm-edBg: #eceef2;
-	--ec-frm-termBg: #e8eaed;
-	border: 1px solid #c0c2c7 !important;
+	--ec-frm-edBg: #f5f6f8;
+	--ec-frm-termBg: #f5f6f8;
+	border: 1px solid var(--sl-color-hairline-light) !important;
 }
 
 :root[data-theme='light'] .expressive-code figure {
-	background-color: #eceef2 !important;
+	background-color: #f5f6f8 !important;
 }
 
 :root[data-theme='light'] .expressive-code pre {
-	background-color: #eceef2 !important;
+	background-color: #f5f6f8 !important;
 }
 
 :root[data-theme='light'] .expressive-code .header {
-	background-color: #e0e2e6 !important;
-	border-bottom: 1px solid #c0c2c7;
+	background-color: #eceef2 !important;
+	border-bottom: 1px solid var(--sl-color-hairline-light);
 }
 
 :root[data-theme='light'] .expressive-code .copy button {
 	background-color: rgba(0, 0, 0, 0.05) !important;
-	border: 1px solid #c0c2c7 !important;
+	border: 1px solid var(--sl-color-hairline) !important;
 	color: #545861;
 }
 
 :root[data-theme='light'] .expressive-code .copy button:hover {
-	background-color: #e9ecef !important;
+	background-color: rgba(0, 0, 0, 0.1) !important;
 	color: #24272f;
 }
 
@@ -171,14 +163,14 @@ body,
  * FILE TREE (arborescences)
  * ======================================== */
 starlight-file-tree {
-	background-color: var(--sl-color-gray-6) !important;
-	border: 1px solid var(--sl-color-hairline);
+	background-color: #052b5d !important;
+	border: 1px solid #0a4080;
 	border-radius: 8px;
 	padding: 1rem;
 }
 
 starlight-file-tree ul {
-	border-left-color: var(--sl-color-gray-5);
+	border-left-color: #0a4080;
 }
 
 starlight-file-tree .directory > details > summary:hover {
@@ -196,14 +188,19 @@ starlight-file-tree .directory > details > summary:hover {
 }
 
 .sl-link-card:hover {
-	border-color: var(--sl-color-accent);
-	background-color: var(--sl-color-gray-5);
+	border-color: #0a4080;
+	background-color: #052b5d;
 }
 
 .card {
 	border: 1px solid var(--sl-color-gray-5);
 	background-color: var(--sl-color-bg) !important;
 	border-radius: 8px;
+	transition: all 0.2s ease;
+}
+
+.card:hover {
+	border-color: #0a4080;
 }
 
 /* ========================================
@@ -261,7 +258,7 @@ tr:last-child td {
  * INLINE CODE
  * ======================================== */
 :not(pre) > code {
-	background-color: var(--sl-color-gray-5);
+	background-color: rgba(5, 43, 93, 0.5);
 	padding: 2px 6px;
 	border-radius: 4px;
 	font-size: 0.9em;
@@ -313,4 +310,125 @@ img[src*="github.com"][src*="badge"] {
 
 .social-icons a:hover {
 	color: var(--sl-color-white);
+}
+
+/* ========================================
+ * SPLASH / HOMEPAGE
+ * Style premium inspiré pqctoday + vaultinum
+ * ======================================== */
+
+/* Hero - centré pleine largeur (override Starlight desktop layout) */
+@media (min-width: 50rem) {
+	[data-has-hero] .hero {
+		grid-template-columns: 1fr !important;
+		text-align: center !important;
+	}
+
+	[data-has-hero] .hero .stack {
+		align-items: center !important;
+	}
+
+	[data-has-hero] .hero .copy {
+		align-items: center !important;
+	}
+
+	[data-has-hero] .hero .actions {
+		justify-content: center !important;
+	}
+}
+
+/* Hero - titre gradient */
+[data-has-hero] .hero h1 {
+	font-size: clamp(2.5rem, 6vw, 4rem) !important;
+	letter-spacing: -1.5px;
+	line-height: 1.1;
+	background: linear-gradient(135deg, #005BC5 0%, #FF55A3 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+:root[data-theme='light'][data-has-hero] .hero h1 {
+	background: linear-gradient(135deg, #052b5d 0%, #FF55A3 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* Hero - tagline */
+[data-has-hero] .hero .tagline {
+	font-size: 1.25rem;
+	max-width: 900px;
+	margin: 0 auto;
+	color: var(--sl-color-gray-2);
+}
+
+/* Cards - transparent + bordure subtile */
+[data-has-hero] .card {
+	background: transparent !important;
+	border: 1px solid rgba(255, 255, 255, 0.08) !important;
+	border-radius: 12px;
+	transition: all 0.3s ease;
+}
+
+[data-has-hero] .card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(0, 91, 197, 0.3) !important;
+	box-shadow: 0 12px 40px rgba(0, 91, 197, 0.1);
+}
+
+:root[data-theme='light'][data-has-hero] .card {
+	background: transparent !important;
+	border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+:root[data-theme='light'][data-has-hero] .card:hover {
+	border-color: rgba(0, 91, 197, 0.3) !important;
+	box-shadow: 0 12px 40px rgba(5, 43, 93, 0.08);
+}
+
+/* Card titres et contenu centrés */
+[data-has-hero] .card .title {
+	justify-content: center !important;
+	text-align: center !important;
+	width: 100%;
+}
+
+[data-has-hero] .card .body {
+	text-align: center !important;
+}
+
+[data-has-hero] .card {
+	align-items: center !important;
+}
+
+/* Actions buttons - style vaultinum */
+[data-has-hero] .actions a[data-variant="primary"] {
+	background: linear-gradient(135deg, #FF55A3, #E04A90);
+	box-shadow: 0 4px 15px rgba(255, 85, 163, 0.3);
+}
+
+[data-has-hero] .actions a[data-variant="primary"]:hover {
+	box-shadow: 0 6px 25px rgba(255, 85, 163, 0.5);
+	transform: translateY(-1px);
+}
+
+/* Section headings on splash — centrage */
+[data-has-hero] .sl-markdown-content .sl-heading-wrapper {
+	text-align: center !important;
+}
+
+[data-has-hero] .sl-markdown-content h2 {
+	display: inline !important;
+	font-size: 1.75rem;
+	margin-top: 3rem;
+	margin-bottom: 1rem;
+	color: var(--sl-color-white);
+}
+
+/* CardGrid - toutes les cards sur une ligne sur la splash page */
+@media (min-width: 50rem) {
+	[data-has-hero] .card-grid {
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+	}
 }
