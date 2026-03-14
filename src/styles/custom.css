@@ -354,6 +354,7 @@ img[src*="github.com"][src*="badge"] {
 
 [data-has-hero] .actions a[data-variant="secondary"]:hover {
 	transform: translateY(-1px);
+	background: rgba(255, 255, 255, 0.05);
 }
 
 /* Landing sections — full width content */
@@ -378,6 +379,59 @@ img[src*="github.com"][src*="badge"] {
 .fade-in.visible {
 	opacity: 1;
 	transform: translateY(0);
+}
+
+/* ========================================
+ * BOUTONS LANDING PAGE
+ * ======================================== */
+.q-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	border-radius: 10px;
+	font-weight: 600;
+	font-size: 0.9rem;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.q-btn-primary {
+	background: linear-gradient(135deg, #FF55A3, #E04A90);
+	color: white;
+	box-shadow: 0 4px 15px rgba(255, 85, 163, 0.3);
+}
+
+.q-btn-primary:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 6px 25px rgba(255, 85, 163, 0.5);
+}
+
+.q-btn-accent {
+	background: linear-gradient(135deg, #005BC5, #0070f3);
+	color: white;
+	box-shadow: 0 4px 15px rgba(0, 91, 197, 0.3);
+}
+
+.q-btn-accent:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 6px 25px rgba(0, 91, 197, 0.4);
+}
+
+.q-btn-secondary {
+	color: var(--sl-color-gray-2);
+	border: 1px solid var(--sl-color-gray-5);
+}
+
+.q-btn-secondary:hover {
+	border-color: var(--sl-color-gray-3);
+	color: var(--sl-color-white);
+	background: rgba(255, 255, 255, 0.05);
+	transform: translateY(-1px);
+}
+
+:root[data-theme='light'] .q-btn-secondary:hover {
+	background: rgba(0, 0, 0, 0.04);
 }
 
 /* ========================================
