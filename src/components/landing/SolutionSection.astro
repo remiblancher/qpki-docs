@@ -89,12 +89,14 @@
       <div class="algo-bar">
         <span class="algo-label">Algorithms</span>
         <div class="algo-tags">
-          <span class="algo-tag pq">ML-DSA-44</span>
-          <span class="algo-tag pq">ML-DSA-65</span>
-          <span class="algo-tag pq">ML-DSA-87</span>
-          <span class="algo-tag pq">ML-KEM-768</span>
+          <span class="algo-tag pq">ML-DSA</span>
+          <span class="algo-tag pq">ML-KEM</span>
           <span class="algo-tag pq">SLH-DSA</span>
-          <span class="algo-tag hybrid">Hybrid</span>
+          <span class="algo-tag classical">RSA</span>
+          <span class="algo-tag classical">ECDSA</span>
+          <span class="algo-tag classical">EdDSA</span>
+          <span class="algo-tag hybrid">Catalyst</span>
+          <span class="algo-tag hybrid">Composite</span>
         </div>
       </div>
     </div>
@@ -224,6 +226,12 @@
     background: rgba(255, 85, 163, 0.08);
     color: var(--sl-color-accent-high);
     border: 1px solid rgba(255, 85, 163, 0.2);
+  }
+
+  .algo-tag.classical {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--sl-color-gray-2);
+    border: 1px solid var(--sl-color-gray-5);
   }
 
   .algo-tag.hybrid {
