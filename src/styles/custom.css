@@ -17,8 +17,8 @@
 	/* Échelle de gris */
 	--sl-color-gray-1: #eceef2;
 	--sl-color-gray-2: #c0c2c7;
-	--sl-color-gray-3: #888b96;
-	--sl-color-gray-4: #545861;
+	--sl-color-gray-3: #9a9da8;
+	--sl-color-gray-4: #7b7f8a;
 	--sl-color-gray-5: #353841;
 	--sl-color-gray-6: #24272f;
 
@@ -378,4 +378,22 @@ img[src*="github.com"][src*="badge"] {
 .fade-in.visible {
 	opacity: 1;
 	transform: translateY(0);
+}
+
+/* ========================================
+ * REDUCED MOTION - Accessibility
+ * ======================================== */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	.fade-in {
+		opacity: 1;
+		transform: none;
+	}
 }

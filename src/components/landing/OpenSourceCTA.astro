@@ -41,20 +41,24 @@ try {
       <p>QPKI is free and open source. Built in Go, licensed under Apache 2.0. Contributions welcome.</p>
 
       <div class="oss-stats">
-        <div class="stat">
-          <span class="stat-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2.5 5 5.5.8-4 3.9.9 5.3L8 13.3 3.1 16l.9-5.3-4-3.9 5.5-.8L8 1z" fill="#eab308"/></svg>
-          </span>
-          <span class="stat-value">{stars}</span>
-          <span class="stat-label">Stars</span>
-        </div>
-        <div class="stat">
-          <span class="stat-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 3v4M5 11v2M11 3v2M11 9v4M5 7a2 2 0 104 0H5zM11 5a2 2 0 10-4 0h4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          </span>
-          <span class="stat-value">{forks}</span>
-          <span class="stat-label">Forks</span>
-        </div>
+        {stars > 0 && (
+          <div class="stat">
+            <span class="stat-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2.5 5 5.5.8-4 3.9.9 5.3L8 13.3 3.1 16l.9-5.3-4-3.9 5.5-.8L8 1z" fill="#eab308"/></svg>
+            </span>
+            <span class="stat-value">{stars}</span>
+            <span class="stat-label">Stars</span>
+          </div>
+        )}
+        {forks > 0 && (
+          <div class="stat">
+            <span class="stat-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 3v4M5 11v2M11 3v2M11 9v4M5 7a2 2 0 104 0H5zM11 5a2 2 0 10-4 0h4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </span>
+            <span class="stat-value">{forks}</span>
+            <span class="stat-label">Forks</span>
+          </div>
+        )}
         {latestRelease && (
           <div class="stat">
             <span class="stat-icon">
