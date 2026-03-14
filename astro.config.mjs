@@ -19,7 +19,7 @@ export default defineConfig({
 				Hero: './src/components/Hero.astro',
 			},
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/qentriq' },
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/remiblancher/qpki' },
 			],
 			plugins: [
 				starlightUtils({
