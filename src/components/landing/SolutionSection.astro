@@ -7,8 +7,8 @@
 
 <section class="solution-section not-content">
   <div class="section-inner">
-    <h2 class="section-title">One binary. Full PKI.</h2>
-    <p class="section-subtitle">From root CA to OCSP responder — everything ships in a single CLI.</p>
+    <h2 class="section-title">One binary. Complete PKI toolkit.</h2>
+    <p class="section-subtitle">From root CA to OCSP responder — CA, certificates, and services in a single CLI.</p>
 
     <!-- Architecture Diagram -->
     <div class="arch-diagram fade-in" role="img" aria-label="Architecture: CLI → CA → Certificates → Services (OCSP, CRL, TSA, CMS, COSE)">
@@ -87,16 +87,28 @@
 
       <!-- Algorithms bar -->
       <div class="algo-bar">
-        <span class="algo-label">Algorithms</span>
-        <div class="algo-tags">
-          <span class="algo-tag pq">ML-DSA</span>
-          <span class="algo-tag pq">ML-KEM</span>
-          <span class="algo-tag pq">SLH-DSA</span>
-          <span class="algo-tag classical">RSA</span>
-          <span class="algo-tag classical">ECDSA</span>
-          <span class="algo-tag classical">EdDSA</span>
-          <span class="algo-tag hybrid">Catalyst</span>
-          <span class="algo-tag hybrid">Composite</span>
+        <div class="algo-group">
+          <span class="algo-label">Post-Quantum</span>
+          <div class="algo-tags">
+            <span class="algo-tag pq">ML-DSA</span>
+            <span class="algo-tag pq">ML-KEM</span>
+            <span class="algo-tag pq">SLH-DSA</span>
+          </div>
+        </div>
+        <div class="algo-group">
+          <span class="algo-label">Classical</span>
+          <div class="algo-tags">
+            <span class="algo-tag classical">RSA</span>
+            <span class="algo-tag classical">ECDSA</span>
+            <span class="algo-tag classical">EdDSA</span>
+          </div>
+        </div>
+        <div class="algo-group">
+          <span class="algo-label">Hybrid Modes</span>
+          <div class="algo-tags">
+            <span class="algo-tag hybrid">Catalyst</span>
+            <span class="algo-tag hybrid">Composite</span>
+          </div>
         </div>
       </div>
     </div>
@@ -193,14 +205,20 @@
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     flex-wrap: wrap;
   }
 
+  .algo-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .algo-label {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
     color: var(--sl-color-gray-4);
@@ -253,16 +271,30 @@
   /* Responsive */
   @media (max-width: 768px) {
     .arch-flow {
-      flex-direction: column;
-      gap: 0.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
     }
 
     .arch-arrow {
-      transform: rotate(90deg);
+      display: none;
+    }
+
+    .arch-node {
+      padding: 1rem 0.5rem;
+      width: auto;
     }
 
     .arch-diagram {
-      padding: 2rem 1rem;
+      padding: 1.5rem 1rem;
+    }
+
+    .algo-bar {
+      gap: 1rem;
+    }
+
+    .algo-group {
+      gap: 0.3rem;
     }
   }
 </style>

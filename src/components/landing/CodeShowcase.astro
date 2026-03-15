@@ -25,7 +25,7 @@
             <span class="comment"># Initialize a post-quantum Root CA</span>
             <div class="cmd-line">
               <span class="prompt">$</span>
-              <span class="command">qpki ca init --algorithm ml-dsa-65 --cn <span class="string">"Acme Root CA"</span> --org <span class="string">"Acme Corp"</span></span>
+              <span class="command">qpki ca init --profile ml/root-ca --var cn=<span class="string">"Acme Root CA"</span> --var organization=<span class="string">"Acme Corp"</span></span>
             </div>
             <div class="output-line">
               <span class="check">&#10003;</span> Root CA initialized · algorithm: <span class="val">ML-DSA-65</span> · expires: <span class="val">2035-01-01</span>
@@ -41,7 +41,7 @@
             <span class="comment"># Create an issuing sub-CA</span>
             <div class="cmd-line">
               <span class="prompt">$</span>
-              <span class="command">qpki ca create-sub --cn <span class="string">"Acme Issuing CA"</span> --parent root</span>
+              <span class="command">qpki ca init --profile ml/issuing-ca --parent ./root-ca --var cn=<span class="string">"Acme Issuing CA"</span></span>
             </div>
             <div class="output-line">
               <span class="check">&#10003;</span> Sub-CA created · signed by: <span class="val">Acme Root CA</span>
@@ -57,7 +57,7 @@
             <span class="comment"># Issue a server certificate</span>
             <div class="cmd-line">
               <span class="prompt">$</span>
-              <span class="command">qpki cert issue --profile server --cn <span class="string">"api.acme.com"</span> --san <span class="string">"*.acme.com"</span></span>
+              <span class="command">qpki credential enroll --profile ml/tls-server-sign --var cn=<span class="string">"api.acme.com"</span> --var san=<span class="string">"*.acme.com"</span></span>
             </div>
             <div class="output-line">
               <span class="check">&#10003;</span> Certificate issued · SAN: <span class="val">*.acme.com</span> · valid: <span class="val">365 days</span>
