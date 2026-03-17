@@ -16,6 +16,7 @@
         <span class="feature-badge">Core</span>
         <h3>Post-Quantum Ready</h3>
         <p>PQC via Cloudflare CIRCL. ML-DSA for signatures, ML-KEM for key encapsulation, SLH-DSA for hash-based signatures. PQ & hybrid certificates cross-tested with OpenSSL and BouncyCastle.</p>
+        <a href="/qpki/getting-started/post-quantum/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
         <div class="mini-terminal">
@@ -35,6 +36,7 @@
         <span class="feature-badge blue">Migration</span>
         <h3>Hybrid Certificates</h3>
         <p>Dual-algorithm certificates combine classical with post-quantum algorithms. Backward compatible with existing infrastructure while quantum-safe.</p>
+        <a href="/qpki/migration/hybrid/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
         <div class="mini-terminal">
@@ -61,6 +63,7 @@
         <span class="feature-badge green">Agility</span>
         <h3>Crypto-Agile by Design</h3>
         <p>Each credential bundles multiple certificates — classical and post-quantum — with a coupled lifecycle. Enroll today, rotate to new algorithms tomorrow. Declarative profiles make migration a one-line operation.</p>
+        <a href="/qpki/migration/crypto-agility/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
         <div class="mini-terminal">
@@ -84,6 +87,7 @@
         <span class="feature-badge purple">Enterprise</span>
         <h3>HSM Ready</h3>
         <p>PKCS#11 integration for hardware security modules. Keep private keys in tamper-resistant hardware. Works with air-gapped and FIPS-validated environments.</p>
+        <a href="/qpki/operations/hsm/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
         <div class="mini-terminal">
@@ -104,6 +108,7 @@
         <span class="feature-badge orange">Encryption</span>
         <h3>Post-Quantum Encryption</h3>
         <p>CMS encryption with ML-KEM key encapsulation. Defeat harvest-now-decrypt-later: data intercepted today stays protected even when quantum computers arrive. RFC 9883 attestation for KEM enrollment.</p>
+        <a href="/qpki/services/cms/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
         <div class="mini-terminal">
@@ -124,6 +129,7 @@
         <span class="feature-badge cyan">Long-Term</span>
         <h3>Quantum-Safe Timestamping</h3>
         <p>RFC 3161 timestamping with ML-DSA. Classical timestamps can be forged once quantum computers break their signatures — PQC timestamps remain unforgeable for 30+ years. Built-in HTTP server for production deployment.</p>
+        <a href="/qpki/services/tsa/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
         <div class="mini-terminal">
@@ -243,6 +249,20 @@
     color: var(--sl-color-gray-3);
     line-height: 1.7;
     font-size: 1rem;
+  }
+
+  .feature-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #FF55A3;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .feature-link:hover {
+    color: #ff79b8;
   }
 
   /* Mini terminal */
