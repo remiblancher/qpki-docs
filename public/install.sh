@@ -3,7 +3,7 @@
 # Usage: curl -sSL https://qpki.io/install.sh | sh
 set -eu
 
-REPO="qentriq/qpki"
+REPO="remiblancher/qpki"
 INSTALL_DIR="${QPKI_INSTALL_DIR:-/usr/local/bin}"
 BINARY="qpki"
 
