@@ -133,7 +133,7 @@
       <div class="feature-text">
         <span class="feature-badge orange">Encryption</span>
         <h3>Post-Quantum Encryption</h3>
-        <p>CMS encryption with ML-KEM key encapsulation. Defeat harvest-now-decrypt-later: data intercepted today stays protected even when quantum computers arrive. RFC 9883 attestation for KEM enrollment.</p>
+        <p>CMS encryption with ML-KEM key encapsulation. Defeat harvest-now-decrypt-later: data intercepted today stays protected even when quantum computers arrive. RFC 9880 (ML-KEM in CMS) and RFC 9883 attestation for KEM enrollment.</p>
         <a href="/qpki/services/cms/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
@@ -153,8 +153,8 @@
     <div class="feature-row fade-in">
       <div class="feature-text">
         <span class="feature-badge cyan">Long-Term</span>
-        <h3>Quantum-Safe Timestamping</h3>
-        <p>RFC 3161 timestamping with ML-DSA. Classical timestamps can be forged once quantum computers break their signatures — PQC timestamps remain unforgeable for 30+ years. Built-in HTTP server for production deployment.</p>
+        <h3>Quantum-Proof Timestamps</h3>
+        <p>RFC 3161 timestamping with ML-DSA. Classical timestamps can be forged once quantum computers break their signatures — PQC timestamps remain unforgeable against quantum attacks. Built-in HTTP server for production deployment.</p>
         <a href="/qpki/services/tsa/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
@@ -179,8 +179,8 @@
     <div class="feature-row reversed fade-in">
       <div class="feature-text">
         <span class="feature-badge yellow">IAM</span>
-        <h3>Post-Quantum IAM Claims</h3>
-        <p>CWT tokens signed with ML-DSA replace vulnerable JWT/JWS for identity, access control, and device attestation. Non-repudiation signatures can be compromised retroactively by quantum computers — ML-DSA tokens protect claims and audit trails today. Hybrid mode ensures backward compatibility.</p>
+        <h3>Post-Quantum Tokens</h3>
+        <p>CWT tokens signed with ML-DSA replace vulnerable JWT/JWS for identity, access control, and device attestation. Protect claims and audit trails against retroactive quantum forgery. Hybrid mode ensures backward compatibility with existing COSE infrastructure.</p>
         <a href="/qpki/services/cose/" class="feature-link">Learn more &rarr;</a>
       </div>
       <div class="feature-code">
