@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 import starlightUtils from '@lorenzo_lewis/starlight-utils';
 import { remarkMdLinks } from './remark-md-links.mjs';
 
@@ -11,6 +12,7 @@ export default defineConfig({
 		remarkPlugins: [remarkMdLinks],
 	},
 	integrations: [
+		sitemap({ lastmod: new Date() }),
 		starlight({
 			title: 'QPKI',
 			description: 'Post-Quantum X.509 PKI in Go — ML-DSA, ML-KEM, SLH-DSA. Single binary, zero dependencies, NIST FIPS 203/204/205 compliant.',

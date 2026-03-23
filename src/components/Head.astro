@@ -6,6 +6,7 @@ const route = Astro.locals.starlightRoute;
 const pageDescription = route.entry.data.description || 'Post-Quantum X.509 PKI toolkit in Go — ML-DSA, ML-KEM, SLH-DSA';
 const title = route.entry.data.title;
 const ogTitle = title.includes('QPKI') ? title : `${title} — QPKI`;
+const isHomepage = route.id === '' || route.id === 'index.mdx' || route.slug === '' || route.slug === '/';
 ---
 
 <Default {...Astro.props}><slot /></Default>
@@ -22,84 +23,46 @@ const ogTitle = title.includes('QPKI') ? title : `${title} — QPKI`;
 <meta name="theme-color" content="#005BC5" />
 
 <!-- JSON-LD Structured Data -->
-<script type="application/ld+json" set:html={JSON.stringify({
-	"@context": "https://schema.org",
-	"@type": "SoftwareApplication",
-	"name": "QPKI",
-	"description": "Post-Quantum X.509 PKI toolkit in Go. Deploy quantum-safe certificates with ML-DSA, ML-KEM and SLH-DSA.",
-	"applicationCategory": "SecurityApplication",
-	"operatingSystem": "Linux, macOS, Windows",
-	"offers": {
-		"@type": "Offer",
-		"price": "0",
-		"priceCurrency": "USD"
-	},
-	"url": "https://qpki.io",
-	"codeRepository": "https://github.com/remiblancher/qpki",
-	"license": "https://opensource.org/licenses/MIT",
-	"author": {
-		"@type": "Organization",
-		"name": "QentriQ"
-	},
-	"softwareVersion": "1.0",
-	"downloadUrl": "https://github.com/remiblancher/qpki/releases",
-	"datePublished": "2025-01-01"
-})} />
-
-<script is:inline>
-(function() {
-	// Gestion de la visibilité des sidebars selon la section
-	function updateSidebarVisibility() {
-		var path = window.location.pathname;
-		var isLabSection = path.startsWith('/qlab/');
-		var isPkiSection = path.startsWith('/qpki/');
-
-		var pkiSidebar = document.querySelector('[data-starlight-multi-sidebar-label="qpki"]');
-		var labSidebar = document.querySelector('[data-starlight-multi-sidebar-label="qlab"]');
-
-		if (pkiSidebar) {
-			pkiSidebar.style.display = isLabSection ? 'none' : 'block';
+{isHomepage ? (
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "SoftwareApplication",
+		"name": "QPKI",
+		"description": "Post-Quantum X.509 PKI toolkit in Go. Deploy quantum-safe certificates with ML-DSA, ML-KEM and SLH-DSA.",
+		"applicationCategory": "SecurityApplication",
+		"operatingSystem": "Linux, macOS, Windows",
+		"offers": {
+			"@type": "Offer",
+			"price": "0",
+			"priceCurrency": "USD"
+		},
+		"url": "https://qpki.io",
+		"codeRepository": "https://github.com/remiblancher/qpki",
+		"license": "https://opensource.org/licenses/MIT",
+		"author": {
+			"@type": "Organization",
+			"name": "QentriQ"
+		},
+		"softwareVersion": "1.0",
+		"downloadUrl": "https://github.com/remiblancher/qpki/releases",
+		"datePublished": "2025-01-01"
+	})} />
+) : (
+	<script type="application/ld+json" set:html={JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "TechArticle",
+		"headline": ogTitle,
+		"description": pageDescription,
+		"author": {
+			"@type": "Organization",
+			"name": "QentriQ"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "QentriQ",
+			"url": "https://qpki.io"
 		}
-		if (labSidebar) {
-			labSidebar.style.display = isPkiSection ? 'none' : 'block';
-		}
-	}
+	})} />
+)}
 
-	// Run on initial load
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', updateSidebarVisibility);
-	} else {
-		updateSidebarVisibility();
-	}
-
-	// Run after View Transitions
-	document.addEventListener('astro:after-swap', updateSidebarVisibility);
-})();
-
-// Scroll fade-in animation
-(function() {
-	function initFadeIn() {
-		var els = document.querySelectorAll('.fade-in');
-		if (!els.length) return;
-
-		var observer = new IntersectionObserver(function(entries) {
-			entries.forEach(function(entry) {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('visible');
-					observer.unobserve(entry.target);
-				}
-			});
-		}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-		els.forEach(function(el) { observer.observe(el); });
-	}
-
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initFadeIn);
-	} else {
-		initFadeIn();
-	}
-
-	document.addEventListener('astro:after-swap', initFadeIn);
-})();
-</script>
+<script is:inline src="/js/head-scripts.js" defer></script>
