@@ -365,7 +365,7 @@ img[src*="github.com"][src*="badge"] {
 
 [data-has-hero] .actions .sl-link-button.secondary:hover {
 	transform: translateY(-1px);
-	background: #21242c;
+	background: rgba(255, 255, 255, 0.05);
 }
 
 /* Landing sections — full width content */
