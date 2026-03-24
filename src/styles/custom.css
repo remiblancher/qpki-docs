@@ -348,13 +348,13 @@ img[src*="github.com"][src*="badge"] {
 /* Actions buttons - style premium */
 [data-has-hero] .actions .sl-link-button.primary {
 	background: linear-gradient(135deg, #FF55A3, #E04A90);
-	color: #17181c;
+	color: #ffffff;
 	box-shadow: 0 4px 15px rgba(255, 85, 163, 0.3);
 	transition: all 0.2s ease;
 }
 
 [data-has-hero] .actions .sl-link-button.primary:hover {
-	color: #17181c;
+	color: #ffffff;
 	box-shadow: 0 6px 25px rgba(255, 85, 163, 0.5);
 	transform: translateY(-1px);
 }
@@ -409,7 +409,7 @@ img[src*="github.com"][src*="badge"] {
 
 .q-btn-primary {
 	background: linear-gradient(135deg, #FF55A3, #E04A90);
-	color: #17181c;
+	color: #ffffff;
 	box-shadow: 0 4px 15px rgba(255, 85, 163, 0.3);
 }
 
