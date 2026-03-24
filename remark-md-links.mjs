@@ -7,9 +7,8 @@ export function remarkMdLinks() {
     const filePath = file.history[0] || '';
 
     // Detect source: via symlink from real repo path or via content/docs
-    // Use negative lookahead to avoid matching post-quantum-pki-lab
-    const isQpkiRepo = /post-quantum-pki(?!-lab)/.test(filePath);
-    const isQlabRepo = filePath.includes('post-quantum-pki-lab/');
+    const isQpkiRepo = /\/qpki\//.test(filePath) && !/\/qpki-docs\//.test(filePath);
+    const isQlabRepo = /\/qlab\//.test(filePath);
 
     // Get directory relative to content/docs (for files accessed via symlink paths)
     const docsMatch = filePath.match(/content\/docs\/(.+)$/);

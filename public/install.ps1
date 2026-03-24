@@ -2,7 +2,7 @@
 # Usage: irm https://qpki.io/install.ps1 | iex
 $ErrorActionPreference = "Stop"
 
-$Repo = "remiblancher/qpki"
+$Repo = "qpki/qpki"
 $Binary = "qpki"
 $InstallDir = if ($env:QPKI_INSTALL_DIR) { $env:QPKI_INSTALL_DIR } else { Join-Path $env:LOCALAPPDATA "qpki" }
 

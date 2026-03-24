@@ -1,6 +1,6 @@
 [submodule "qpki"]
 	path = qpki
-	url = https://github.com/remiblancher/qpki.git
+	url = https://github.com/qpki/qpki.git
 [submodule "qlab"]
 	path = qlab
-	url = https://github.com/remiblancher/qlab.git
+	url = https://github.com/qpki/qlab.git
