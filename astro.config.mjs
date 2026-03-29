@@ -15,6 +15,11 @@ export default defineConfig({
 		sitemap({ lastmod: new Date() }),
 		starlight({
 			title: 'QPKI',
+			logo: {
+				light: './public/images/brand/icon-light.svg',
+				dark: './public/images/brand/icon-dark.svg',
+				replacesTitle: false,
+			},
 			description: 'Post-Quantum X.509 PKI in Go — ML-DSA, ML-KEM, SLH-DSA. Single binary, zero dependencies, NIST FIPS 203/204/205 compliant.',
 			components: {
 				Head: './src/components/Head.astro',
