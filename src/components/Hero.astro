@@ -32,7 +32,7 @@ const { title = data.title, tagline, actions = [] } = data.hero || {};
 		}
 		{data.template === 'splash' && (
 			<div class="hero-teaser">
-				<span class="teaser-btn" aria-disabled="true">QPKI Cloud — Coming Soon</span>
+				<a class="teaser-btn" href="https://forms.gle/XjjYR7aa3Aiv9CsAA" target="_blank" rel="noopener">QPKI Cloud — Coming Soon</a>
 			</div>
 		)}
 	</div>
@@ -142,9 +142,15 @@ const { title = data.title, tagline, actions = [] } = data.hero || {};
 		color: var(--sl-color-gray-3);
 		font-size: 0.8rem;
 		font-weight: 500;
-		cursor: default;
-		opacity: 0.5;
-		user-select: none;
+		cursor: pointer;
+		opacity: 0.7;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.teaser-btn:hover {
+		opacity: 1;
+		border-color: var(--sl-color-gray-3);
 	}
 
 	@media (min-width: 50rem) {
