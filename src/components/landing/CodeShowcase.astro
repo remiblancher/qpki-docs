@@ -25,7 +25,7 @@
             <span class="comment"># Initialize a hybrid Root CA</span>
             <div class="cmd-line">
               <span class="prompt">$</span>
-              <span class="command">qpki ca init --profile hybrid/catalyst/root-ca --var cn=<span class="string">"Acme Root CA"</span> --var o=<span class="string">"Acme Corp"</span></span>
+              <span class="command">qpki ca init --profile hybrid/catalyst/root-ca --ca-dir ./root-ca --var cn=<span class="string">"Acme Root CA"</span> --var o=<span class="string">"Acme Corp"</span></span>
             </div>
             <div class="output-line">
               <span class="check">&#10003;</span> Root CA initialized · <span class="val">Catalyst ECDSA+ML-DSA</span> · expires: <span class="val">2035-01-01</span>
@@ -41,7 +41,7 @@
             <span class="comment"># Create a hybrid issuing sub-CA</span>
             <div class="cmd-line">
               <span class="prompt">$</span>
-              <span class="command">qpki ca init --profile hybrid/catalyst/issuing-ca --parent ./root-ca --var cn=<span class="string">"Acme Issuing CA"</span></span>
+              <span class="command">qpki ca init --profile hybrid/catalyst/issuing-ca --ca-dir ./issuing-ca --parent ./root-ca --var cn=<span class="string">"Acme Issuing CA"</span></span>
             </div>
             <div class="output-line">
               <span class="check">&#10003;</span> Sub-CA created · signed by: <span class="val">Acme Root CA</span>
@@ -57,7 +57,7 @@
             <span class="comment"># Issue a hybrid server certificate</span>
             <div class="cmd-line">
               <span class="prompt">$</span>
-              <span class="command">qpki credential enroll --profile hybrid/catalyst/tls-server --var cn=<span class="string">"api.acme.com"</span> --var san=<span class="string">"*.acme.com"</span></span>
+              <span class="command">qpki credential enroll --ca-dir ./issuing-ca --profile hybrid/catalyst/tls-server --var cn=<span class="string">"api.acme.com"</span> --var dns_names=<span class="string">"api.acme.com,*.acme.com"</span></span>
             </div>
             <div class="output-line">
               <span class="check">&#10003;</span> Hybrid certificate issued · <span class="val">Catalyst ECDSA+ML-DSA</span> · valid: <span class="val">365 days</span>
